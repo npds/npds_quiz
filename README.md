@@ -1,2 +1,2 @@
 # npds_quiz
-Module Quiz
+Module Quiz pour le CMS NPDS
