@@ -1,0 +1,58 @@
+----------------------------------------------------------------------
+Installation : npds_quiz Compatible REvolution 16 rev 2020
+----------------------------------------------------------------------
+##
+## INSTALLATION AUTOMATIQUE (Recommandée)
+## 1. Décompresser l'archive dans le dossier modules de votre site
+## 2. Via l'administration du portail aller dans Gestion/Installation Modules
+## 3. En face de Quiz, cliquer sur installer le module et suivez la procédure
+##
+## CHMOD
+## 1. Mettez un CHMOD 777 ou 755 sur les dossiers
+## 2. Mettez un CHMOD 766 sur le fichier cache.timings.php
+## 3. Mettez un CHMOD 666 sur les fichiers .html
+##
+## ADMINISTRATION DU MODULE
+## Via Admin-Plugins de NPDS ou une une URL du type :
+## <a href="admin.php?op=Extend-Admin-SubModule&ModPath=npds_quiz&ModStart=admin/quiz">Quiz Admin</a>
+## Par défaut l'administration du Quiz est réservée aux administrateurs de quiz et SuperAdmin
+##
+## UTILISATION DU MODULE
+## Appel grace à une URL du type : 
+## <a href="modules.php?ModPath=npds_quiz&ModStart=quiz">Quiz NPDS</a>
+##
+## BLOC
+## Affiche un lien admin dans un bloc (pas forcement utile)
+##
+## COMMUNAUTE: 
+## Support NPDS : http://modules.npds.org
+##
+----------------------------------------------------------------------
+Lancement : quiz
+----------------------------------------------------------------------
+- Via une URL de la forme : 
+http://www.votre site.com/modules.php?ModPath=npds_quiz&ModStart=quiz&categ=X (X étant l'ID du quiz)
+
+- Vous pouvez voir le résultat du membre
+http://www.votre site.com/modules.php?ModPath=npds_quiz&ModStart=resultat  
+
+ou la liste des résultats  tous les participants
+
+http://www.votre site.com/modules.php?ModPath=npds_quiz&ModStart=resultat_glob
+
+----------------------------------------------------------------------
+Quelles sont les modifications apportées pour une compatibilité REvolution 
+----------------------------------------------------------------------
+- Fichier quiz.sql a été modifié au niveau "TYPE=MyISAM;" en "ENGINE=MyISAM;"
+- Ensuite j'ai ajouté directement le fichier "resultat_glob.php" qui a été créé par Jeff et Nico, auquel j'ai modifié les lignes de 60 à 63 pour y ajouter les images manquantes, "plus besoin d'installer les images dans le dossier images du site"
+Fouineur
+http://www.les-astuces-web.eu
+
+----------------------------------------------------------------------
+Quelles sont les modifications apportées pour une compatibilité REvolution v.16
+----------------------------------------------------------------------
+- Correction des tables SQL & du code PHP pour une compatibilité SQL 5.7 & PHP 7.2
+- Mise en place d'une installation automatisée via (install.conf.php) l'administration NPDS
+- Quelques ( corrections "coquilles" du code / mises en forme Bootstrap / introduction d'un code couleur des textes si vrai ou faux / corrections translations Lang...)  <= encore à améliorer
+- Rajout de l'éditeur TinyMCE pour proposer de meilleurs formats dans les questions du Quiz. 
+- Rajout d'un bloc menu... 
