@@ -78,7 +78,7 @@ $ThisRedo = "modules.php?ModPath=$ModPath&ModStart=$ModStart";
          <div class="col-sm-6">
             <div class="card my-2">
                <div class="card-header h3"><span class="badge badge-secondary">'.$id.'</span><img src="modules/'.$ModPath.'/quiz.png" alt="icon_quiz" style="max-width:80px; max-height=80px;"></div>
-               <div class="card-body lead"><a href="/modules.php?ModPath='.$ModPath.'&amp;ModStart=quiz&amp;categ='.$id.'">'.$categorie.'</a></div>
+               <div class="card-body lead"><a href="modules.php?ModPath='.$ModPath.'&amp;ModStart=quiz&amp;categ='.$id.'">'.$categorie.'</a></div>
                <div class="card-footer">
                   <div class="text-muted small text-right">'.$adm_quiz.'</div>
                </div>

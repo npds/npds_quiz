@@ -2,7 +2,7 @@
 /************************************************************************/
 /* NPDS : Net Portal Dynamic System                                     */
 /* ================================                                     */
-/* This version name NPDS Copyright (c) 2001-2020 by Philippe Brunier   */
+/* This version name NPDS Copyright (c) 2001-2021 by Philippe Brunier   */
 /************************************************************************/
 /* Original Copyright (c) [ 2019 ] Par [ NICOL ]                        */
 /* Module   : [ QUIZ ]                                                  */
@@ -62,7 +62,7 @@ $sql = array("CREATE TABLE ".$NPDS_Prefix."quiz (
   comment2 text COLLATE utf8mb4_unicode_ci NOT NULL,
   type int(1) NOT NULL default '0',
   retenir text COLLATE utf8mb4_unicode_ci NOT NULL,
-  PRIMARY KEY  (id),
+  PRIMARY KEY (id),
   UNIQUE KEY id (id)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;",
 "INSERT INTO ".$NPDS_Prefix."quiz_categorie (id, categorie, admin, tranche, comment1, comment2, type, retenir) VALUES (1, 'Quiz de test pour NPDS', 'Arnaud_Latourrette', 2, 'Vous n\'avez pas assez bien répondu alors je vous affiche le commentaire qui vous suggère de mieux travailler !!!', 'Vous avez répondu à au moins 2 questions, c\'est plutôt pas mal, bravo !', 1, 'Là on peut expliquer un peu tout ce qu\'on veut à l\'utilisateur');",
@@ -76,7 +76,7 @@ $sql = array("CREATE TABLE ".$NPDS_Prefix."quiz (
   heure time NOT NULL default '00:00:00',
   dateheure datetime NOT NULL default '1000-01-01 00:00:00',
   categorie varchar(20) NOT NULL default '',
-  PRIMARY KEY  (numero),
+  PRIMARY KEY (numero),
   UNIQUE KEY numero (numero)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;");
 
