@@ -111,7 +111,7 @@ if ($op=="majscore") {
             $date=date("Y-m-j");
             $heure=date("H:i:s");
             $dateheure=date("Y-m-j H:i:s" );
-            $result4 = sql_query("INSERT INTO ".$NPDS_Prefix."quiz_visiteur VALUES ('', '$cookie[1]', '', '$bonnerep', '$nbquest', '$date', '$heure', '$dateheure', '$categ')");
+            $result4 = sql_query("INSERT INTO ".$NPDS_Prefix."quiz_visiteur VALUES ('0', '$cookie[1]', '', '$bonnerep', '$nbquest', '$date', '$heure', '$dateheure', '$categ')");
             echo '<br /><hr />'.quiz_translate("Votre score a été enregistré");
          }
       }

@@ -294,7 +294,7 @@ function enregnewquest($question, $reponse, $propo1, $propo2, $propo3, $propo4, 
    $propo6 = stripslashes(FixQuotes($propo6));
    $comment = stripslashes(FixQuotes($journal));
    if ($question and $reponse and $propo1 and $propo2)
-      sql_query("INSERT INTO ".$NPDS_Prefix."quiz values (NULL, '$question', '$reponse', '$propo1', '$propo2', '$propo3', '$propo4', '$propo5', '$propo6', '$quizcat', '$journal')");
+      sql_query("INSERT INTO ".$NPDS_Prefix."quiz values ('0', '$question', '$reponse', '$propo1', '$propo2', '$propo3', '$propo4', '$propo5', '$propo6', '$quizcat', '$journal')");
    redirect_url ("admin.php?op=Extend-Admin-SubModule&ModPath=$ModPath&ModStart=$ModStart&subop=quizmod&quizid=$quizcat");
 }
 function deletequest($id, $quizid) {
@@ -348,7 +348,7 @@ function quizenreg($nomquiz) {
    global $ModPath, $ModStart, $NPDS_Prefix, $aid;
    $nomquiz = stripslashes(FixQuotes($nomquiz));
    if ($nomquiz)
-      sql_query("INSERT INTO ".$NPDS_Prefix."quiz_categorie VALUES (NULL, '$nomquiz', '$aid', '0', '', '', '1','')");
+      sql_query("INSERT INTO ".$NPDS_Prefix."quiz_categorie VALUES ('0', '$nomquiz', '$aid', '0', '', '', '1','')");
    redirect_url ("admin.php?op=Extend-Admin-SubModule&ModPath=$ModPath&ModStart=$ModStart");
 }
 
