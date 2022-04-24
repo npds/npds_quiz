@@ -2,7 +2,7 @@
 /************************************************************************/
 /* NPDS : Net Portal Dynamic System                                     */
 /* ================================                                     */
-/* This version name NPDS Copyright (c) 2001-2020 by Philippe Brunier   */
+/* This version name NPDS Copyright (c) 2001-2022 by Philippe Brunier   */
 /************************************************************************/
 /* Original Copyright (c) [ ANNEE ] Par [ NOM DU DEVELOPPEUR ]          */
 /* Module   : [ QUIZ ]                                                  */
@@ -27,14 +27,9 @@ if (strstr($ModPath,"..") || strstr($ModStart,"..") || stristr($ModPath, "script
 
 global $language, $NPDS_Prefix;
 
-if (file_exists("modules/$ModPath/admin/pages.php")) {
+if (file_exists("modules/$ModPath/admin/pages.php"))
    include ("modules/$ModPath/admin/pages.php");
-}
-
 include_once ("modules/$ModPath/lang/lang-$language.php");
-
-$ThisFile = "modules.php?ModPath=$ModPath&amp;ModStart=$ModStart";
-$ThisRedo = "modules.php?ModPath=$ModPath&ModStart=$ModStart";
 
    global $SuperCache;
    if ($SuperCache) {
@@ -44,41 +39,42 @@ $ThisRedo = "modules.php?ModPath=$ModPath&ModStart=$ModStart";
    else
       $cache_obj = new SuperCacheEmpty();
    if (($cache_obj->genereting_output==1) or ($cache_obj->genereting_output==-1) or (!$SuperCache)) {
-
-
-if ($op=="retenir") {
-   settype($quizid, "integer");
-   $result = sql_query("SELECT retenir FROM ".$NPDS_Prefix."quiz_categorie WHERE id='$quizid'");
-   list($retenir) = sql_fetch_row($result);
-
-   if (isset($user)) {
-      if ($cookie[9]=="") $cookie[9]=$Default_Theme;
-      if (isset($theme)) $cookie[9]=$theme;
-      $tmp_theme=$cookie[9];
-      if (!$file=@opendir("themes/$cookie[9]")) {
-         $tmp_theme=$Default_Theme;
-         include("themes/$Default_Theme/theme.php");
+      if ($op=="retenir") {
+         settype($quizid, "integer");
+         $result = sql_query("SELECT retenir FROM ".$NPDS_Prefix."quiz_categorie WHERE id='$quizid'");
+         list($retenir) = sql_fetch_row($result);
+      global $Default_Theme, $Default_Skin, $user;
+      if (isset($user) and $user!='') {
+         global $cookie;
+         if($cookie[9] !='') {
+            $ibix=explode('+', urldecode($cookie[9]));
+            if (array_key_exists(0, $ibix)) $theme=$ibix[0]; else $theme=$Default_Theme;
+            if (array_key_exists(1, $ibix)) $skin=$ibix[1]; else $skin=$Default_skin; //$skin=''; 
+            $tmp_theme=$theme;
+            if (!$file=@opendir("themes/$theme")) $tmp_theme=$Default_Theme;
+         } else 
+            $tmp_theme=$Default_Theme;
       } else {
-         include("themes/$cookie[9]/theme.php");
+         $theme=$Default_Theme;
+         $skin=$Default_Skin;
+         $tmp_theme=$theme;
       }
-   } else {
-      $tmp_theme=$Default_Theme;
-      include("themes/$Default_Theme/theme.php");
-   }
-   echo "<html>
-         <style type=\"text/css\">
-            body { background-color: rgba(245, 248, 250, 0.8); }
-            @import url(\"themes/$tmp_theme/style/style.css\");
-         </style>";
-
-      echo "<body topmargin=\"2\" bottommargin=\"2\" leftmargin=\"2\" rightmargin=\"2\"><title>".quiz_translate("Quiz")."</title>";
-      echo "<table width=\"100%\" height=\"100%\" border=\"0\" cellspacing=\"1\" cellpadding=\"2\" class=\"header\">
-            <tr><td height=\"90%\" valign=\"top\">$retenir</td></tr>
-            <tr><td height=\"10%\" valign=\"top\" align=\"center\"><a href=\"javascript:window.close();\" CLASS=\"btn btn-primary\">".quiz_translate("close this window")."</a></td>
-            </tr>
-            </table>
-            </body>
-      </html>";
-}
+      include("meta/meta.php");
+      echo '
+         <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon" />
+         <link rel="stylesheet" href="lib/font-awesome/css/all.min.css" />
+         <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap-icons.css" />
+         <link rel="stylesheet" id="fw_css" href="themes/_skins/'.$skin.'/bootstrap.min.css" />
+         <link rel="stylesheet" href="lib/bootstrap-table/dist/bootstrap-table.min.css" />
+         <link rel="stylesheet" id="fw_css_extra" href="themes/_skins/'.$skin.'/extra.css" />
+         <script type="text/javascript" src="lib/js/jquery.min.js"></script>
+      </head>
+      <body class="p-3">
+         <h2>'.quiz_translate("Quiz").'</h2>
+         <div class="mb-3">'.$retenir.' </div>
+         <a href="javascript:window.close();" class="btn btn-primary">'.quiz_translate("fermer cette fenêtre").'</a>
+      </body>
+   </html>';
+      }
    }
 ?>

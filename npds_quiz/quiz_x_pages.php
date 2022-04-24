@@ -2,7 +2,7 @@
 /************************************************************************/
 /* NPDS : Net Portal Dynamic System                                     */
 /* ================================                                     */
-/* This version name NPDS Copyright (c) 2001-2020 by Philippe Brunier   */
+/* This version name NPDS Copyright (c) 2001-2022 by Philippe Brunier   */
 /************************************************************************/
 /* Original Copyright (c) [ ANNEE ] Par [ NOM DU DEVELOPPEUR ]          */
 /* Module   : [ QUIZ ]                                                  */
@@ -21,7 +21,7 @@
 /************************************************************************/
 ?>
 <script type="text/javascript" language="javascript">
-<!--
+//<!--
 function verif_quiz() {
    var info = document.quiz,
        mess_Y = "<?php echo html_entity_decode(quiz_translate("Bravo, c'est la bonne réponse ! Vous pouvez passer à la question suivante"),ENT_QUOTES|ENT_SUBSTITUTE|ENT_HTML401,cur_charset); ?>",
@@ -60,43 +60,43 @@ function question($quizid, $nbquest, $combien, $categ) {
       $comment= stripslashes($row['comment']);
 
       echo '
-      <p class=""><b>'.quiz_translate("Question").' '.$nbquest.' '.quiz_translate("sur").' '.$combien.'</b></p>';
+      <p><b>'.quiz_translate("Question").' '.$nbquest.' '.quiz_translate("sur").' '.$combien.'</b></p>';
       echo '
    <div class="card card-body mb-2">
        <div>'.$question.'</div>
        <hr />
       <form name="quiz" action="modules.php?ModPath='.$ModPath.'&amp;ModStart=quiz" method="post">
-         <div class="custom-control custom-radio">
-            <input type="radio" name="radio1" id="pro1" value="'.$propo1.'" class="custom-control-input" />
-            <label class="custom-control-label" for="pro1">'.$propo1.'</label>
+         <div class="form-check">
+            <input type="radio" name="radio1" id="pro1" value="'.$propo1.'" class="form-check-input" />
+            <label class="form-check-label" for="pro1">'.$propo1.'</label>
          </div>
-         <div class="custom-control custom-radio">
-            <input type="radio" name="radio1" id="pro2" value="'.$propo2.'" class="custom-control-input" />
-            <label class="custom-control-label" for="pro2">'.$propo2.'</label>
+         <div class="form-check">
+            <input type="radio" name="radio1" id="pro2" value="'.$propo2.'" class="form-check-input" />
+            <label class="form-check-label" for="pro2">'.$propo2.'</label>
          </div>';
       if ($propo3!='')
          echo '
-         <div class="custom-control custom-radio">
-            <input type="radio" name="radio1" id="pro3" value="'.$propo3.'" class="custom-control-input" />
-            <label class="custom-control-label" for="pro3">'.$propo3.'</label>
+         <div class="form-check">
+            <input type="radio" name="radio1" id="pro3" value="'.$propo3.'" class="form-check-input" />
+            <label class="form-check-label" for="pro3">'.$propo3.'</label>
          </div>';
       if ($propo4!='')
          echo '
-         <div class="custom-control custom-radio">
-            <input type="radio" name="radio1" id="pro4" value="'.$propo4.'" class="custom-control-input" />
-            <label class="custom-control-label" for="pro4">'.$propo4.'</label>
+         <div class="form-check">
+            <input type="radio" name="radio1" id="pro4" value="'.$propo4.'" class="form-check-input" />
+            <label class="form-check-label" for="pro4">'.$propo4.'</label>
          </div>';
       if ($propo5!='')
          echo '
-         <div class="custom-control custom-radio">
-            <input type="radio" name="radio1" id="pro5" value="'.$propo5.'" class="custom-control-input" />
-            <label class="custom-control-label" for="pro5">'.$propo5.'</label>
+         <div class="form-check">
+            <input type="radio" name="radio1" id="pro5" value="'.$propo5.'" class="form-check-input" />
+            <label class="form-check-label" for="pro5">'.$propo5.'</label>
          </div>';
       if ($propo6!='')
          echo '
-         <div class="custom-control custom-radio">
-            <input type="radio" name="radio1" id="pro6" value="'.$propo6.'" class="custom-control-input" />
-            <label class="custom-control-label" for="pro6">'.$propo6.'</label>
+         <div class="form-check">
+            <input type="radio" name="radio1" id="pro6" value="'.$propo6.'" class="form-check-input" />
+            <label class="form-check-label" for="pro6">'.$propo6.'</label>
          </div>';
       echo '
          <input type="hidden" name="reponse" value="'.$reponse.'" />
@@ -108,16 +108,14 @@ function question($quizid, $nbquest, $combien, $categ) {
 
          <p id="rep" name="rep" class="text-danger" ></p>
 
-         <div class="form-group row">
+         <div class="mb-3 row">
             <label class="col-form-label col-sm-12" for="com">'.quiz_translate("Commentaires").'</label>
             <div class="col-sm-12">
                <div name="com" id="com" class="form-control"></div>
             </div>
          </div>';
-      if ($nbquest==($combien))
-         $nombouton=quiz_translate("Fin du Quiz");
-      else
-         $nombouton=quiz_translate("Question suivante");
+         
+      $nombouton = $nbquest==($combien) ? quiz_translate("Fin du Quiz") : quiz_translate("Question suivante");
       echo '
          <input type="submit" class="btn btn-success" name="suiv" value="'.$nombouton.'" disabled="disabled" />
       </form>

@@ -2,7 +2,7 @@
 /************************************************************************/
 /* NPDS : Net Portal Dynamic System                                     */
 /* ================================                                     */
-/* This version name NPDS Copyright (c) 2001-2020 by Philippe Brunier   */
+/* This version name NPDS Copyright (c) 2001-2022 by Philippe Brunier   */
 /************************************************************************/
 /* Original Copyright (c) [ ANNEE ] Par [ NOM DU DEVELOPPEUR ]          */
 /* Module   : [ QUIZ ]                                                  */
@@ -65,7 +65,7 @@ if ($op=="majscore") {
          <div class="card card-body my-3 border-'.$clb.'">
             <div class="lead h4">'.$question.'</div>
                <hr />
-               <p><span class="font-weight-bolder">'.quiz_translate("Vous avez répondu").' :</span><br />
+               <p><span class="fw-bolder">'.quiz_translate("Vous avez répondu").' :</span><br />
                <span class="text-'.$clb.'">'.StripSlashes($var[$i]).'</span></p>';
          if ($reponse == StripSlashes($var[$i])) {
             echo '
@@ -80,11 +80,11 @@ if ($op=="majscore") {
             echo '
                <p class="blockquote mt-3">'.quiz_translate("Note").' : <i>'.$comment.'</i></p>';
          echo '
-         <p class="h3"><span class="badge badge-'.$clb.' float-right">'.$point.'</span></p>
+         <p class="h3"><span class="badge bg-'.$clb.' float-end">'.$point.'</span></p>
          </div>';
       }
       echo '
-      <p class="h4">'.quiz_translate("Vous avez obtenu").' <span class="badge badge-success">'.$bonnerep.'</span> '.quiz_translate("bonnes réponses sur un total de").' <span class="badge badge-secondary">'.$nbquest.'</span> '.quiz_translate("questions.").'</p>';
+      <p class="h4">'.quiz_translate("Vous avez obtenu").' <span class="badge bg-success">'.$bonnerep.'</span> '.quiz_translate("bonnes réponses sur un total de").' <span class="badge bg-secondary">'.$nbquest.'</span> '.quiz_translate("questions.").'</p>';
 
       if ($tranche!=0) {
          if ($bonnerep < $tranche) {
@@ -94,7 +94,7 @@ if ($op=="majscore") {
          }
       }
 
-      echo '<p align="center"><a class="mr-3" href="javascript:history.back()">'.quiz_translate("Revenir à l'écran précédent").'</a>';
+      echo '<p align="center"><a class="me-3" href="javascript:history.back()">'.quiz_translate("Revenir à l'écran précédent").'</a>';
       if ($retenir!='') {
          $PopUp=JavaPopUp("modules.php?ModPath=$ModPath&amp;ModStart=retenir&amp;op=retenir&amp;quizid=$idquiz","Quiz","300","250");
          echo '<a href="javascript:void(0);" onclick="window.open('.$PopUp.');" class="">'.quiz_translate("Consultez les points à retenir").'</a>';

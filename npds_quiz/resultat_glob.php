@@ -2,7 +2,7 @@
 /************************************************************************/
 /* NPDS : Net Portal Dynamic System                                     */
 /* ================================                                     */
-/* This version name NPDS Copyright (c) 2001-2020 by Philippe Brunier   */
+/* This version name NPDS Copyright (c) 2001-2022 by Philippe Brunier   */
 /************************************************************************/
 /* Original Copyright (c) [ ANNEE ] Par [ NOM DU DEVELOPPEUR ]          */
 /* Module   : [ NOM DU MODULE ]                                         */
@@ -61,9 +61,9 @@ if( ! isset( $numQuiz ) ) $numQuiz = ''; // l'initialiser si elle n'existe pas
 if( ! isset( $numQuest ) ) $numQuest = ''; // l'initialiser si elle n'existe pas   
 
 echo '
-<h2><img src="modules/'.$ModPath.'/quiz.png" alt="icon_quiz" style="max-width:120px; max-height=120px;">Quiz résultats</h2>
+<h2><img src="modules/'.$ModPath.'/quiz.png" alt="icon_quiz" style="max-width:120px; max-height=120px;" loading="lazy">Quiz résultats</h2>
 <hr />
-<div class="lead mb-3"><span class="badge badge-secondary">'.$numQuiz.'</span> '.quiz_translate("quizz composés en tout de").' <span class="badge badge-secondary">'.$numQuest.'</span> '.quiz_translate("questions...").'</div>';
+<div class="lead mb-3"><span class="badge bg-secondary">'.$numQuiz.'</span> '.quiz_translate("quizz composés en tout de").' <span class="badge bg-secondary">'.$numQuest.'</span> '.quiz_translate("questions...").'</div>';
 
    while ($row=sql_fetch_array($getvisiteur)){
       //echo $row["nomvisiteur"]." ".$row["name"]." ".$row["address"]."<br>";
@@ -71,8 +71,8 @@ echo '
       echo '
    <div class="my-3">
        <table data-toggle="table">
-          <thead class="thead-dark">
-             <tr class="table-secondary">
+          <thead>
+             <tr class="table-dark">
                 <th data-halign="center" data-align="center">Les '.quiz_translate("Quiz").' joués par '.$visiteur.'</td>
                 <th data-halign="center" data-align="center">Bonnes réponses</td>
                 <th data-halign="center" data-align="center">Questions</td>
@@ -91,8 +91,8 @@ echo '
       echo '
             <tr>
                <td><a href="modules.php?ModPath='.$ModPath.'&amp;ModStart=quiz&amp;categ='.$categorie.'">'.$result2['categorie'].'</a></td>
-               <td align="center"><span class="badge badge-pill badge-success">'.$reponsesjustes.'</span></td>
-               <td align="center"><span class="badge badge-pill badge-secondary">'.$nbquestion.'</span></td>
+               <td align="center"><span class="badge rounded-pill bg-success">'.$reponsesjustes.'</span></td>
+               <td align="center"><span class="badge rounded-pill bg-secondary">'.$nbquestion.'</span></td>
                <td align="center"><small>'.formatTimestamp($dateheure).'</small></td>
             </tr>';
       $bonnesReponses = $bonnesReponses + $reponsesjustes;
@@ -106,9 +106,9 @@ echo '
                <td>'.quiz_translate("pourcentage de réussite").'</td>
             </tr>
             <tr class="table-secondary" align="center">
-               <td class="h4"><span class="badge badge-pill badge-secondary">'.$nbQuizz.'</span></td>
-               <td class="h4"><span class="badge badge-pill badge-success">'.$bonnesReponses.'</span></td>
-               <td class="h4"><span class="badge badge-pill badge-secondary">'.$reponsesTotales.'</span></td>';
+               <td class="h4"><span class="badge rounded-pill bg-secondary">'.$nbQuizz.'</span></td>
+               <td class="h4"><span class="badge rounded-pill bg-success">'.$bonnesReponses.'</span></td>
+               <td class="h4"><span class="badge rounded-pill bg-secondary">'.$reponsesTotales.'</span></td>';
    $pourcentage = 0;
    if($reponsesTotales > 0)
       $pourcentage = number_format($bonnesReponses/$reponsesTotales*100, 2, '.', ' ');

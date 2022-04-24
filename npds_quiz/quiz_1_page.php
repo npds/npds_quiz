@@ -2,7 +2,7 @@
 /************************************************************************/
 /* NPDS : Net Portal Dynamic System                                     */
 /* ================================                                     */
-/* This version name NPDS Copyright (c) 2001-2020 by Philippe Brunier   */
+/* This version name NPDS Copyright (c) 2001-2022 by Philippe Brunier   */
 /************************************************************************/
 /* Original Copyright (c) [ ANNEE ] Par [ NOM DU DEVELOPPEUR ]          */
 /* Module   : [ QUIZ ]                                                  */
@@ -24,40 +24,40 @@ function tableau_question($nbquest, $tmp, $propo1, $propo2, $propo3='', $propo4=
    echo '
    <div class="card card-body mb-3">
          <strong class="my-2 lead">'.$tmp.'</strong>
-   <div class="custom-control custom-radio">
-      <input type="radio" id="propo1_'.$nbquest.'" name="var['.$nbquest.']" class="custom-control-input" value="'.$propo1.'" required="required" />
-      <label class="custom-control-label" for="propo1_'.$nbquest.'">'.$propo1.'</label>
+   <div class="form-check">
+      <input type="radio" id="propo1_'.$nbquest.'" name="var['.$nbquest.']" class="form-check-input" value="'.$propo1.'" required="required" />
+      <label class="form-check-label" for="propo1_'.$nbquest.'">'.$propo1.'</label>
    </div>
-   <div class="custom-control custom-radio">
-      <input type="radio" id="propo2_'.$nbquest.'" name="var['.$nbquest.']" class="custom-control-input" value="'.$propo2.'" />
-      <label class="custom-control-label" for="propo2_'.$nbquest.'">'.$propo2.'</label>
+   <div class="form-check">
+      <input type="radio" id="propo2_'.$nbquest.'" name="var['.$nbquest.']" class="form-check-input" value="'.$propo2.'" />
+      <label class="form-check-label" for="propo2_'.$nbquest.'">'.$propo2.'</label>
    </div>';
    if ($propo3!='') {
       echo'
-   <div class="custom-control custom-radio">
-      <input type="radio" id="propo3_'.$nbquest.'" name="var['.$nbquest.']" class="custom-control-input" value="'.$propo3.'" />
-      <label class="custom-control-label" for="propo3_'.$nbquest.'">'.$propo3.'</label>
+   <div class="form-check">
+      <input type="radio" id="propo3_'.$nbquest.'" name="var['.$nbquest.']" class="form-check-input" value="'.$propo3.'" />
+      <label class="form-check-label" for="propo3_'.$nbquest.'">'.$propo3.'</label>
    </div>';
    }
    if ($propo4!='') {
       echo'
-      <div class="custom-control custom-radio">
-         <input type="radio" id="propo4_'.$nbquest.'" name="var['.$nbquest.']" class="custom-control-input" value="'.$propo4.'" />
-         <label class="custom-control-label" for="propo4_'.$nbquest.'">'.$propo4.'</label>
+      <div class="form-check">
+         <input type="radio" id="propo4_'.$nbquest.'" name="var['.$nbquest.']" class="form-check-input" value="'.$propo4.'" />
+         <label class="form-check-label" for="propo4_'.$nbquest.'">'.$propo4.'</label>
       </div>';
    }
    if ($propo5!='') {
       echo'
-      <div class="custom-control custom-radio">
-         <input type="radio" id="propo5_'.$nbquest.'" name="var['.$nbquest.']" class="custom-control-input" value="'.$propo5.'" />
-         <label class="custom-control-label" for="propo5_'.$nbquest.'">'.$propo5.'</label>
+      <div class="form-check">
+         <input type="radio" id="propo5_'.$nbquest.'" name="var['.$nbquest.']" class="form-check-input" value="'.$propo5.'" />
+         <label class="form-check-label" for="propo5_'.$nbquest.'">'.$propo5.'</label>
       </div>';
    }
    if ($propo6!='') {
       echo'
-      <div class="custom-control custom-radio">
-         <input type="radio" id="propo6_'.$nbquest.'" name="var['.$nbquest.']" class="custom-control-input" value="'.$propo6.'" />
-         <label class="custom-control-label" for="propo6_'.$nbquest.'">'.$propo6.'</label>
+      <div class="form-check">
+         <input type="radio" id="propo6_'.$nbquest.'" name="var['.$nbquest.']" class="form-check-input" value="'.$propo6.'" />
+         <label class="form-check-label" for="propo6_'.$nbquest.'">'.$propo6.'</label>
       </div>';
    }
    echo '

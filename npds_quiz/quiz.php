@@ -2,7 +2,7 @@
 /************************************************************************/
 /* NPDS : Net Portal Dynamic System                                     */
 /* ================================                                     */
-/* This version name NPDS Copyright (c) 2001-2020 by Philippe Brunier   */
+/* This version name NPDS Copyright (c) 2001-2022 by Philippe Brunier   */
 /************************************************************************/
 /* Original Copyright (c) [ ANNEE ] Par [ NOM DU DEVELOPPEUR ]          */
 /* Module   : [ QUIZ ]                                                  */
@@ -55,7 +55,7 @@ $ThisRedo = "modules.php?ModPath=$ModPath&ModStart=$ModStart";
       
          if ($type) {
             echo '
-            <h2 class="mb-3"><a href="'.$ThisFile.'"><img src="modules/'.$ModPath.'/quiz.png" alt="icon_quiz" style="max-width:80px; max-height=80px;" /></a>'.quiz_translate("Questions du Quiz").'</h2>
+            <h2 class="mb-3"><a href="'.$ThisFile.'"><img src="modules/'.$ModPath.'/quiz.png" alt="icon_quiz" style="max-width:80px; max-height=80px;" loading="lazy"/></a>'.quiz_translate("Questions du Quiz").'</h2>
             <hr />
             <h3 class="mb-3 text-muted">'.$categorie.'</h3>';
             if ($type==1) {
@@ -77,7 +77,7 @@ $ThisRedo = "modules.php?ModPath=$ModPath&ModStart=$ModStart";
          $affi.='
          <div class="col-sm-6">
             <div class="card my-2">
-               <div class="card-header h3"><span class="badge badge-secondary">'.$id.'</span><img src="modules/'.$ModPath.'/quiz.png" alt="icon_quiz" style="max-width:80px; max-height=80px;"></div>
+               <div class="card-header h3"><span class="badge bg-secondary">'.$id.'</span><img src="modules/'.$ModPath.'/quiz.png" alt="icon_quiz" style="max-width:80px; max-height=80px;" loading="lazy"></div>
                <div class="card-body lead"><a href="modules.php?ModPath='.$ModPath.'&amp;ModStart=quiz&amp;categ='.$id.'">'.$categorie.'</a></div>
                <div class="card-footer">
                   <div class="text-muted small text-right">'.$adm_quiz.'</div>
@@ -86,11 +86,10 @@ $ThisRedo = "modules.php?ModPath=$ModPath&ModStart=$ModStart";
          </div>';
          }
          echo '
-         <h3>'.quiz_translate("Quiz").'<span class="badge badge-secondary badge-pill float-right">'.$totquiz.'</span></h3>
+         <h3>'.quiz_translate("Quiz").'<span class="badge bg-secondary rounded-pill float-end">'.$totquiz.'</span></h3>
          <hr />
          <div class="row">'.$affi.'</div>
          <hr />
-         
          ';
       }
       if ($SuperCache)
