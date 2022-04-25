@@ -50,7 +50,7 @@ if ($op=="majscore") {
       list($idquiz, $categorie, $tranche, $comment1, $comment2, $type, $retenir) = sql_fetch_row($result);
 
       echo '
-      <h2 class="mb-3"><a href=" modules.php?ModPath='.$ModPath.'&amp;ModStart=quiz"><img src="modules/'.$ModPath.'/quiz.png" alt="icon_quiz" style="max-width:80px; max-height=80px;" /></a>'.quiz_translate("Réponses du Quiz").'</h2>
+      <h2 class="mb-3"><a href=" modules.php?ModPath='.$ModPath.'&amp;ModStart=quiz"><img src="modules/'.$ModPath.'/npds_quiz.png" alt="icon_quiz" style="max-width:80px; max-height=80px;" loading="lazy" /></a>'.quiz_translate("Réponses du Quiz").'</h2>
       <hr />
       <h3 class="text-muted">'.$categorie.'</h3>';
       $bonnerep=0;

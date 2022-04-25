@@ -2,7 +2,7 @@
 /************************************************************************/
 /* NPDS : Net Portal Dynamic System                                     */
 /* ================================                                     */
-/* This version name NPDS Copyright (c) 2001-2020 by Philippe Brunier   */
+/* This version name NPDS Copyright (c) 2001-2022 by Philippe Brunier   */
 /************************************************************************/
 /* Original Copyright (c) [ ANNEE ] Par [ NOM DU DEVELOPPEUR ]          */
 /* Module   : [ QUIZ ]                                                  */
@@ -36,7 +36,6 @@ function listquiz() {
    if ($radminsuper==1) {
       $result = sql_query("SELECT id, categorie, admin FROM ".$NPDS_Prefix."quiz_categorie ORDER BY categorie");
    } 
-   
 /*
    else {
       $result = sql_query("SELECT id, categorie, admin FROM ".$NPDS_Prefix."quiz_categorie WHERE admin='$aid' ORDER BY categorie");
@@ -44,7 +43,6 @@ function listquiz() {
 */
 $hlpfile='';
    GraphicAdmin($hlpfile);
-
 
    echo '
    <h2>'.quiz_adm_translate("Administration des Quiz").'</h2>
@@ -54,7 +52,7 @@ $hlpfile='';
    <h3 class="mb-3">'.quiz_adm_translate("Liste des Quiz").'</h3>
 
    <div class="">
-      <table data-toggle="table">
+      <table data-toggle="table" data-mobile-responsive="true">
          <thead>
             <th data-halign="center">'.quiz_adm_translate("Nom du Quiz").'</th>
             <th data-halign="center" data-sortable="true">'.quiz_adm_translate("Auteur").'</th>
@@ -209,7 +207,7 @@ function detailquestion($quizid, $quizq) {
    <h3>'.quiz_adm_translate("Modification d'une question pour le Quiz").' : '.$categorie.'</h3>
    '.quiz_adm_translate("Vous devez obligatoirement saisir le libellé de la question. Vous devez ensuite saisir au moins les 2 premières propositions, les suivantes étant optionnelles. Vous devez ensuite copier-coller la bonne proposition dans la case Bonne réponse.").'
    <form action="admin.php" method="post" name="adminForm" class="my-3">
-      <div class="form-group row">
+      <div class="mb-3 row">
          <label class="col-form-label col-sm-12" for="question">'.quiz_adm_translate("Libellé").' <span class="text-danger">*</span></label>
          <div class="col-sm-12">
             <textarea name="question" id="question" class="form-control tin" rows="4">'.$question.'</textarea>

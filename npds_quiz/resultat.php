@@ -50,11 +50,10 @@ $ThisRedo = "modules.php?ModPath=$ModPath&ModStart=$ModStart";
 if ($user) {
    $result = sql_query("SELECT reponsesjustes, nbquestion, dateheure, categorie FROM ".$NPDS_Prefix."quiz_visiteur WHERE nomvisiteur='$cookie[1]'");
    echo '
-   <h2><img src="modules/'.$ModPath.'/quiz.png" alt="icon_quiz" style="max-width:120px; max-height=120px;">'.quiz_translate("Quiz").' '.quiz_translate("vos résultats").'</h2>
+   <h2><img src="modules/'.$ModPath.'/npds_quiz.png" alt="icon_quiz" style="max-width:120px; max-height=120px;" loading="lazy" />'.quiz_translate("Quiz").' '.quiz_translate("vos résultats").'</h2>
    <hr />
-
-   <table data-toggle="table">
-      <thead class="thead-dark">
+   <table data-toggle="table" data-mobile-responsive="true">
+      <thead class="table-dark">
          <tr>
             <th data-halign="center" data-align="center">'.quiz_translate("Quiz").'</th>
             <th data-halign="center" data-align="center">'.quiz_translate("Note").'</th>
@@ -79,8 +78,6 @@ if ($user) {
    if ($SuperCache)
       $cache_obj->endCachingPage();
    include("footer.php");
-   
-} else {
+} else
    header("location: index.php");
-}
 ?>

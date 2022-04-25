@@ -61,7 +61,7 @@ if( ! isset( $numQuiz ) ) $numQuiz = ''; // l'initialiser si elle n'existe pas
 if( ! isset( $numQuest ) ) $numQuest = ''; // l'initialiser si elle n'existe pas   
 
 echo '
-<h2><img src="modules/'.$ModPath.'/quiz.png" alt="icon_quiz" style="max-width:120px; max-height=120px;" loading="lazy">Quiz résultats</h2>
+<h2><img src="modules/'.$ModPath.'/npds_quiz.png" alt="icon_quiz" style="max-width:120px; max-height=120px;" loading="lazy">Quiz résultats</h2>
 <hr />
 <div class="lead mb-3"><span class="badge bg-secondary">'.$numQuiz.'</span> '.quiz_translate("quizz composés en tout de").' <span class="badge bg-secondary">'.$numQuest.'</span> '.quiz_translate("questions...").'</div>';
 
@@ -70,7 +70,7 @@ echo '
       $visiteur=$row["nomvisiteur"];
       echo '
    <div class="my-3">
-       <table data-toggle="table">
+       <table data-toggle="table" data-mobile-responsive="true">
           <thead>
              <tr class="table-dark">
                 <th data-halign="center" data-align="center">Les '.quiz_translate("Quiz").' joués par '.$visiteur.'</td>
@@ -116,7 +116,7 @@ echo '
       $pourcentage=0;
    echo' 
                <td>
-                  <div class="progress">
+                  <div class="progress" style="height:14px;">
                      <div class="progress-bar bg-success" role="progressbar" style="width: '.$pourcentage.'%;" aria-valuenow="'.$pourcentage.'" aria-valuemin="0" aria-valuemax="100">'.$pourcentage.'%</div>
                   </div>
                </td>

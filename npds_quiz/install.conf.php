@@ -2,7 +2,7 @@
 /************************************************************************/
 /* NPDS : Net Portal Dynamic System                                     */
 /* ================================                                     */
-/* This version name NPDS Copyright (c) 2001-2021 by Philippe Brunier   */
+/* This version name NPDS Copyright (c) 2001-2022 by Philippe Brunier   */
 /************************************************************************/
 /* Original Copyright (c) [ 2019 ] Par [ NICOL ]                        */
 /* Module   : [ QUIZ ]                                                  */
@@ -27,7 +27,7 @@ $name_module = "npds_quiz";
 #autodoc $path_adm_module: chemin depuis $ModInstall #required SI admin avec interface
 $path_adm_module ='admin/quiz';
 $affich='quiz'; // pour l'affichage du nom du module
-$icon='quiz'; // c'est un nom de fichier(sans extension) !!
+$icon='npds_quiz'; // c'est un nom de fichier(sans extension) !!
 
 #autodoc $sql = array(""): Si votre module doit exécuter une ou plusieurs requêtes SQL, tapez vos requêtes ici.
 #autodoc Attention! UNE requête par élément de tableau!
