@@ -20,8 +20,8 @@
 /* the License.                                                         */
 /************************************************************************/
 
-if(!stristr($_SERVER['PHP_SELF'],'admin.php')) Access_Error();
-
+if (!function_exists('admindroits'))
+   include($_SERVER['DOCUMENT_ROOT'].'/admin/die.php');
 $f_meta_nom ='npds_quiz';
 //==> controle droit
 admindroits($aid,$f_meta_nom);
