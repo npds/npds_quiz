@@ -20,7 +20,7 @@ include_once ("modules/npds_quiz/lang/lang-$language.php");
 $content = '';
 $content .= '
 <div class="d-flex w-100 justify-content-center">
-   <a href=""><img src="modules/npds_quiz/npds_quiz.png" alt="icon_quiz" style="max-width:100px; max-height=100px;" loading="lazy"></a>
+   <a href=""><img src="modules/npds_quiz/npds_quiz.png" alt="icon_quiz" style="max-width:100px; max-height:100px;" loading="lazy"></a>
 </div>
 <ul class="list-group list-group-flush">
    <li class="list-group-item"><a href="modules.php?ModPath=npds_quiz&ModStart=quiz">'.quiz_translate("Quiz").'</a></li>
