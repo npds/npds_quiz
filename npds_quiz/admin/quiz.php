@@ -2,7 +2,7 @@
 /************************************************************************/
 /* NPDS : Net Portal Dynamic System                                     */
 /* ================================                                     */
-/* This version name NPDS Copyright (c) 2001-2022 by Philippe Brunier   */
+/* This version name NPDS Copyright (c) 2001-2024 by Philippe Brunier   */
 /************************************************************************/
 /* Original Copyright (c) [ ANNEE ] Par [ NOM DU DEVELOPPEUR ]          */
 /* Module   : [ QUIZ ]                                                  */
@@ -55,7 +55,7 @@ $hlpfile='';
       <table data-toggle="table" data-mobile-responsive="true">
          <thead>
             <th data-halign="center">'.quiz_adm_translate("Nom du Quiz").'</th>
-            <th data-halign="center" data-sortable="true">'.quiz_adm_translate("Auteur").'</th>
+            <th data-halign="center" data-sortable="true"><i class="fas fa-user-cog fa-lg align-middle me-2 text-body-tertiary"></i>'.quiz_adm_translate("Auteur").'</th>
             <th data-halign="center">'.quiz_adm_translate("Tester").'</th>
          </thead>
          <tbody>';
@@ -362,58 +362,59 @@ function quizaddquest($quizcat) {
    echo '
    <h3>'.quiz_adm_translate("Nouvelle question pour le Quiz").' : '.$categorie.'</h3>
    <form action="admin.php" method="post" name="adminForm">
-   <div class="blockquote">';
-   echo quiz_adm_translate("Vous devez obligatoirement saisir le libellé de la question. Vous devez ensuite saisir au moins les 2 premières propositions, les suivantes étant optionnelles. Vous devez ensuite copier-coller la bonne proposition dans la case Bonne réponse.")."
-        </div><div><hr />";
-        echo '
+      <div class="blockquote">
+   '.quiz_adm_translate("Vous devez obligatoirement saisir le libellé de la question. Vous devez ensuite saisir au moins les 2 premières propositions, les suivantes étant optionnelles. Vous devez ensuite copier-coller la bonne proposition dans la case Bonne réponse.").'
+      </div>
+      <div>
+         <hr />
          <div class="mb-3 row">
-           <label class="col-form-label col-sm-12" for="question">'.quiz_adm_translate("Libellé").' <span class="text-danger">*</span></label>
-           <div class="col">
-              <textarea id="question" name="question" class="form-control tin" rows="4"></textarea>
-           </div>
-        </div>
+            <label class="col-form-label col-sm-12" for="question">'.quiz_adm_translate("Libellé").' <span class="text-danger">*</span></label>
+            <div class="col">
+               <textarea id="question" name="question" class="form-control tin" rows="4"></textarea>
+            </div>
+         </div>
          <div class="mb-3 row">
             <label class="col-form-label col-sm-4" for="propo1">'.quiz_adm_translate("Proposition").' 1 <span class="text-danger">*</span></label>
             <div class="col-sm-8">
                <textarea id="propo1" name="propo1" class="form-control" rows="2"></textarea>
-           </div>
-        </div>
-        <div class="mb-3 row">
+            </div>
+         </div>
+         <div class="mb-3 row">
             <label class="col-form-label col-sm-4" for="propo2">'.quiz_adm_translate("Proposition").' 2 <span class="text-danger">*</span></label>
             <div class="col-sm-8">
                <textarea id="propo2" name="propo2" class="form-control" rows="2"></textarea>
-           </div>
-        </div>
-        <div class="mb-3 row">
+            </div>
+         </div>
+         <div class="mb-3 row">
             <label class="col-form-label col-sm-4" for="propo3">'.quiz_adm_translate("Proposition").' 3</label>
             <div class="col-sm-8">
                <textarea id="propo3" name="propo3" class="form-control" rows="2"></textarea>
-           </div>
-        </div>
-        <div class="mb-3 row">
+            </div>
+         </div>
+         <div class="mb-3 row">
             <label class="col-form-label col-sm-4" for="propo4">'.quiz_adm_translate("Proposition").' 4</label>
             <div class="col-sm-8">
                <textarea id="propo4" name="propo4" class="form-control" rows="2"></textarea>
-           </div>
-        </div>
+            </div>
+         </div>
          <div class="mb-3 row">
             <label class="col-form-label col-sm-4" for="propo5">'.quiz_adm_translate("Proposition").' 5</label>
             <div class="col-sm-8">
                <textarea id="propo5" name="propo5" class="form-control" rows="2"></textarea>
-           </div>
-        </div>
+            </div>
+         </div>
          <div class="mb-3 row">
             <label class="col-form-label col-sm-4" for="propo6">'.quiz_adm_translate("Proposition").' 6</label>
             <div class="col-sm-8">
                <textarea id="propo6" name="propo6" class="form-control" rows="2"></textarea>
-           </div>
-        </div>
+            </div>
+         </div>
          <div class="mb-3 row">
             <label class="col-form-label col-sm-4" for="reponse">'.quiz_adm_translate("Bonne réponse").' <span class="text-danger">*</span></label>
             <div class="col-sm-8">
                <textarea id="reponse" name="reponse" class="form-control" rows="2"></textarea>
-           </div>
-        </div>';
+            </div>
+         </div>';
          echo aff_editeur("question", "true");
          echo '
          <div class="mb-3 row">
@@ -424,22 +425,22 @@ function quizaddquest($quizcat) {
          </div>';
          echo aff_editeur("journal", "true");
          echo '
-      <input type="hidden" name="op" value="Extend-Admin-SubModule" />
-      <input type="hidden" name="ModPath" value="'.$ModPath.'" />
-      <input type="hidden" name="ModStart" value="'.$ModStart.'" />
-      <input type="hidden" name="subop" value="quizenregnewquest" />
-      <input type="hidden" name="quizcat" value="'.$quizcat.'" />
-      <div class="mb-3 row">
-         <div class="col-sm-12">
-            <input type="submit" class="btn btn-primary" value="'.quiz_adm_translate("Enregistrer cette question").'" />
+         <input type="hidden" name="op" value="Extend-Admin-SubModule" />
+         <input type="hidden" name="ModPath" value="'.$ModPath.'" />
+         <input type="hidden" name="ModStart" value="'.$ModStart.'" />
+         <input type="hidden" name="subop" value="quizenregnewquest" />
+         <input type="hidden" name="quizcat" value="'.$quizcat.'" />
+         <div class="mb-3 row">
+            <div class="col-sm-12">
+               <input type="submit" class="btn btn-primary" value="'.quiz_adm_translate("Enregistrer cette question").'" />
+            </div>
          </div>
       </div>
    </form>';
 }
 
-
 if ($admin) {
-   if( ! isset( $subop ) ) $subop = ''; // l'initialiser si elle n'existe pas
+   if(!isset($subop)) $subop = '';
    switch ($subop) {
        case "quizmod":
           detailquiz($quizid);

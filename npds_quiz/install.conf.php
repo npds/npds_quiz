@@ -2,7 +2,7 @@
 /************************************************************************/
 /* NPDS : Net Portal Dynamic System                                     */
 /* ================================                                     */
-/* This version name NPDS Copyright (c) 2001-2022 by Philippe Brunier   */
+/* This version name NPDS Copyright (c) 2001-2024 by Philippe Brunier   */
 /************************************************************************/
 /* Original Copyright (c) [ 2019 ] Par [ NICOL ]                        */
 /* Module   : [ QUIZ ]                                                  */

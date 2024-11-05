@@ -2,7 +2,7 @@
 /************************************************************************/
 /* NPDS : Net Portal Dynamic System                                     */
 /* ================================                                     */
-/* This version name NPDS Copyright (c) 2001-2022 by Philippe Brunier   */
+/* This version name NPDS Copyright (c) 2001-2024 by Philippe Brunier   */
 /************************************************************************/
 /* Original Copyright (c) [ ANNEE ] Par [ NOM DU DEVELOPPEUR ]          */
 /* Module   : [ QUIZ ]                                                  */
@@ -67,7 +67,7 @@ if ($user) {
          <tr>
             <td><a href="modules.php?ModPath='.$ModPath.'&amp;ModStart=quiz&amp;categ='.$categorie.'">'.$result2['categorie'].'</a></td>
             <td>'.$reponsesjustes.'/<b>'.$nbquestion.'</b></td>
-            <td><small>'.formatTimestamp($dateheure).'<small></td>
+            <td><small>'.formatTimes($dateheure,IntlDateFormatter::SHORT, IntlDateFormatter::SHORT).'<small></td>
          </tr>';
    }
    echo '

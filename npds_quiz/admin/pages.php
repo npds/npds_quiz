@@ -3,7 +3,7 @@
 /* NPDS : Net Portal Dynamic System                                     */
 /* ===========================                                          */
 /*  SURCHARGE DU PAGES.PHP POUR LE MODULE                               */
-/* [ QUIZ ] PAGE File [ 2019-2022 ] par [ NOM DU DEVELOPPEUR ]          */
+/* [ QUIZ ] PAGE File [ 2019-2024 ] par [ NOM DU DEVELOPPEUR ]          */
 /*                                                                      */
 /************************************************************************/
 // DEFINITION et CAST VARIABLES

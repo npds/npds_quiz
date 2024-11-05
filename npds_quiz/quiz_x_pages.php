@@ -2,7 +2,7 @@
 /************************************************************************/
 /* NPDS : Net Portal Dynamic System                                     */
 /* ================================                                     */
-/* This version name NPDS Copyright (c) 2001-2022 by Philippe Brunier   */
+/* This version name NPDS Copyright (c) 2001-2024 by Philippe Brunier   */
 /************************************************************************/
 /* Original Copyright (c) [ ANNEE ] Par [ NOM DU DEVELOPPEUR ]          */
 /* Module   : [ QUIZ ]                                                  */
@@ -24,8 +24,8 @@
 //<!--
 function verif_quiz() {
    var info = document.quiz,
-       mess_Y = "<?php echo html_entity_decode(quiz_translate("Bravo, c'est la bonne réponse ! Vous pouvez passer à la question suivante"),ENT_QUOTES|ENT_SUBSTITUTE|ENT_HTML401,cur_charset); ?>",
-       mess_N = "<?php echo html_entity_decode(quiz_translate("Ce n'est pas la bonne réponse, vous devez la trouver avant de passer à la question suivante. Merci de recommencer."),ENT_QUOTES|ENT_SUBSTITUTE|ENT_HTML401,cur_charset); ?>";
+       mess_Y = "<?php echo html_entity_decode(quiz_translate("Bravo, c'est la bonne réponse ! Vous pouvez passer à la question suivante"),ENT_QUOTES|ENT_SUBSTITUTE|ENT_HTML401,'UTF-8'); ?>",
+       mess_N = "<?php echo html_entity_decode(quiz_translate("Ce n'est pas la bonne réponse, vous devez la trouver avant de passer à la question suivante. Merci de recommencer."),ENT_QUOTES|ENT_SUBSTITUTE|ENT_HTML401,'UTF-8'); ?>";
    $("#com").html('');
    $("#rep").text(mess_N);
    $("#rep").removeClass( "text-success" ).addClass( "text-danger" );

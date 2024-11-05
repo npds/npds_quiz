@@ -2,7 +2,7 @@
 /************************************************************************/
 /* NPDS : Net Portal Dynamic System                                     */
 /* ================================                                     */
-/* This version name NPDS Copyright (c) 2001-2022 by Philippe Brunier   */
+/* This version name NPDS Copyright (c) 2001-2024 by Philippe Brunier   */
 /************************************************************************/
 /* Original Copyright (c) [ ANNEE ] Par [ NOM DU DEVELOPPEUR ]          */
 /* Module   : [ NOM DU MODULE ]                                         */
@@ -93,7 +93,7 @@ echo '
                <td><a href="modules.php?ModPath='.$ModPath.'&amp;ModStart=quiz&amp;categ='.$categorie.'">'.$result2['categorie'].'</a></td>
                <td align="center"><span class="badge rounded-pill bg-success">'.$reponsesjustes.'</span></td>
                <td align="center"><span class="badge rounded-pill bg-secondary">'.$nbquestion.'</span></td>
-               <td align="center"><small>'.formatTimestamp($dateheure).'</small></td>
+               <td align="center"><small>'.formatTimes($dateheure,IntlDateFormatter::SHORT, IntlDateFormatter::SHORT).'</small></td>
             </tr>';
       $bonnesReponses = $bonnesReponses + $reponsesjustes;
       $reponsesTotales = $reponsesTotales + $nbquestion;

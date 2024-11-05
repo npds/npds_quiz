@@ -5,7 +5,7 @@
 /*                                                                      */
 /*                                                                      */
 /*                                                                      */
-/* NPDS Copyright (c) 2002-2022 by Philippe Brunier                     */
+/* NPDS Copyright (c) 2002-2024 by Philippe Brunier                     */
 /*                                                                      */
 /* This program is free software. You can redistribute it and/or modify */
 /* it under the terms of the GNU General Public License as published by */
@@ -20,7 +20,7 @@ include_once ("modules/npds_quiz/lang/lang-$language.php");
 $content = '';
 $content .= '
 <div class="d-flex w-100 justify-content-center">
-   <a href=""><img src="modules/npds_quiz/npds_quiz.png" alt="icon_quiz" style="max-width:100px; max-height:100px;" loading="lazy"></a>
+   <img src="modules/npds_quiz/npds_quiz.png" alt="icon_quiz" style="max-width:100px; max-height:100px;" loading="lazy" />
 </div>
 <ul class="list-group list-group-flush">
    <li class="list-group-item"><a href="modules.php?ModPath=npds_quiz&ModStart=quiz">'.quiz_translate("Quiz").'</a></li>

@@ -2,7 +2,7 @@
 /************************************************************************/
 /* NPDS : Net Portal Dynamic System                                     */
 /* ================================                                     */
-/* This version name NPDS Copyright (c) 2001-2022 by Philippe Brunier   */
+/* This version name NPDS Copyright (c) 2001-2024 by Philippe Brunier   */
 /************************************************************************/
 /* Original Copyright (c) [ ANNEE ] Par [ NOM DU DEVELOPPEUR ]          */
 /* Module   : [ QUIZ ]                                                  */
@@ -52,7 +52,7 @@ if ($op=="majscore") {
       echo '
       <h2 class="mb-3"><a href=" modules.php?ModPath='.$ModPath.'&amp;ModStart=quiz"><img src="modules/'.$ModPath.'/npds_quiz.png" alt="icon_quiz" style="max-width:80px; max-height=80px;" loading="lazy" /></a>'.quiz_translate("Réponses du Quiz").'</h2>
       <hr />
-      <h3 class="text-muted">'.$categorie.'</h3>';
+      <h3 class="text-body-secondary">'.$categorie.'</h3>';
       $bonnerep=0;
       for ($i = 1; $i <= $nbquest; $i++) {
          $result = sql_query("SELECT question, reponse, comment FROM ".$NPDS_Prefix."quiz WHERE id='$id[$i]'");
@@ -105,7 +105,7 @@ if ($op=="majscore") {
          $result3 = sql_query("SELECT reponsesjustes, nbquestion, dateheure FROM ".$NPDS_Prefix."quiz_visiteur WHERE nomvisiteur='$cookie[1]' AND categorie='$categ'");
          if (sql_num_rows($result3) > 0) {
             list($rep, $quest, $dthr) = sql_fetch_row($result3);
-            echo '<hr />'.quiz_translate("Vous avez déjà participé à ce quiz le").'&nbsp;'.formatTimestamp($dthr).'&nbsp;'.quiz_translate(", et vous avez obtenu un score de")."&nbsp;<b>$rep/$quest</b>.<br />";
+            echo '<hr />'.quiz_translate("Vous avez déjà participé à ce quiz le").'&nbsp;'.formatTimes($dthr,IntlDateFormatter::SHORT, IntlDateFormatter::SHORT).'&nbsp;'.quiz_translate(", et vous avez obtenu un score de")."&nbsp;<b>$rep/$quest</b>.<br />";
             echo quiz_translate("Voulez-vous remplacer votre ancien score par celui-ci ?").' <a href="modules.php?ModPath='.$ModPath.'&amp;ModStart=quiz_valid&amp;op=majscore&amp;categ='.$categ.'&amp;bonnerep='.$bonnerep.'&amp;nbquest='.$nbquest.'">'.quiz_translate("Oui").'</a>';
          } else {
             $date=date("Y-m-j");

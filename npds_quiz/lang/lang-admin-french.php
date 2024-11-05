@@ -3,7 +3,7 @@
 /* NPDS V : Net Portal Dynamic System .                                 */
 /* ====================================                                 */
 /*                                                                      */
-/* This version name NPDS Copyright (c) 2001-2020 by Philippe Brunier   */
+/* This version name NPDS Copyright (c) 2001-2024 by Philippe Brunier   */
 /*                                                                      */
 /* E-learning services Copyright (c) 2003 by Alatourrette - AxéCité     */
 /*                                                                      */
@@ -13,6 +13,6 @@
 /************************************************************************/
 
 function quiz_adm_translate($phrase) {
-  return (htmlentities($phrase,ENT_QUOTES|ENT_SUBSTITUTE|ENT_HTML401,cur_charset));
+  return (htmlentities($phrase,ENT_QUOTES|ENT_SUBSTITUTE|ENT_HTML401,'UTF-8'));
 }
 ?>
