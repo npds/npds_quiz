@@ -2,7 +2,7 @@
 /************************************************************************/
 /* NPDS : Net Portal Dynamic System                                     */
 /* ================================                                     */
-/* This version name NPDS Copyright (c) 2001-2024 by Philippe Brunier   */
+/* This version name NPDS Copyright (c) 2001-2026 by Philippe Brunier   */
 /************************************************************************/
 /* Original Copyright (c) [ ANNEE ] Par [ NOM DU DEVELOPPEUR ]          */
 /* Module   : [ QUIZ ]                                                  */
@@ -22,7 +22,7 @@
 
 if (!function_exists('admindroits'))
    include($_SERVER['DOCUMENT_ROOT'].'/admin/die.php');
-$f_meta_nom ='npds_quiz';
+$f_meta_nom = 'npds_quiz';
 //==> controle droit
 admindroits($aid,$f_meta_nom);
 //<== controle droit
@@ -33,15 +33,14 @@ function listquiz() {
    global $aid, $NPDS_Prefix, $ModPath, $ModStart;
    $result = sql_query("SELECT radminsuper FROM authors WHERE aid='$aid'");
    list($radminsuper) = sql_fetch_array($result);
-   if ($radminsuper==1) {
+   if ($radminsuper==1)
       $result = sql_query("SELECT id, categorie, admin FROM ".$NPDS_Prefix."quiz_categorie ORDER BY categorie");
-   } 
 /*
    else {
       $result = sql_query("SELECT id, categorie, admin FROM ".$NPDS_Prefix."quiz_categorie WHERE admin='$aid' ORDER BY categorie");
    }
 */
-$hlpfile='';
+$hlpfile = '';
    GraphicAdmin($hlpfile);
 
    echo '
