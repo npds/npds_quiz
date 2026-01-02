@@ -3,7 +3,7 @@
 /* NPDS V : Net Portal Dynamic System .                                 */
 /* ====================================                                 */
 /*                                                                      */
-/* This version name NPDS Copyright (c) 2001-2024 by Philippe Brunier   */
+/* This version name NPDS Copyright (c) 2001-2026 by Philippe Brunier   */
 /*                                                                      */
 /* E-learning services Copyright (c) 2003 by Alatourrette - AxéCité     */
 /*                                                                      */

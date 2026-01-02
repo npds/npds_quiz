@@ -27,13 +27,12 @@ if (strstr($ModPath,'..') || strstr($ModStart,'..') || stristr($ModPath, 'script
 global $language, $NPDS_Prefix;
 
 if (file_exists("modules/$ModPath/admin/pages.php"))
-   include ("modules/$ModPath/admin/pages.php");
+   include "modules/$ModPath/admin/pages.php";
 
-include_once ("modules/$ModPath/lang/lang-$language.php");
-include_once('cache.class.php');
-include ("modules/$ModPath/cache.timings.php");
-
-include ("header.php");
+include_once "modules/$ModPath/lang/lang-$language.php";
+include_once 'cache.class.php';
+include 'modules/'.$ModPath.'/cache.timings.php';
+include 'header.php';
 
 $ThisFile = "modules.php?ModPath=$ModPath&amp;ModStart=$ModStart";
 $ThisRedo = "modules.php?ModPath=$ModPath&ModStart=$ModStart";
@@ -45,7 +44,7 @@ $ThisRedo = "modules.php?ModPath=$ModPath&ModStart=$ModStart";
    } 
    else
       $cache_obj = new SuperCacheEmpty();
-   if (($cache_obj->genereting_output==1) or ($cache_obj->genereting_output==-1) or (!$SuperCache)) {
+   if (($cache_obj->genereting_output == 1) or ($cache_obj->genereting_output == -1) or (!$SuperCache)) {
 
 if ($user) {
    $result = sql_query("SELECT reponsesjustes, nbquestion, dateheure, categorie FROM ".$NPDS_Prefix."quiz_visiteur WHERE nomvisiteur='$cookie[1]'");
@@ -77,7 +76,7 @@ if ($user) {
    }
    if ($SuperCache)
       $cache_obj->endCachingPage();
-   include("footer.php");
+   include 'footer.php';
 } else
    header("location: index.php");
 ?>

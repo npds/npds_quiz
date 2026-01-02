@@ -27,11 +27,11 @@ if (strstr($ModPath,'..') || strstr($ModStart,'..') || stristr($ModPath, 'script
 global $language, $NPDS_Prefix;
 
 if (file_exists("modules/$ModPath/admin/pages.php"))
-   include ("modules/$ModPath/admin/pages.php");
+   include "modules/$ModPath/admin/pages.php";
 
-include_once ("modules/$ModPath/lang/lang-$language.php");
-include_once('cache.class.php');
-include ("modules/$ModPath/cache.timings.php");
+include_once "modules/$ModPath/lang/lang-$language.php";
+include_once 'cache.class.php';
+include 'modules/'.$ModPath.'/cache.timings.php';
 
 //include ("header.php");
 
@@ -45,7 +45,7 @@ $ThisRedo = "modules.php?ModPath=$ModPath&ModStart=$ModStart";
    } 
    else
       $cache_obj = new SuperCacheEmpty();
-   if (($cache_obj->genereting_output==1) or ($cache_obj->genereting_output==-1) or (!$SuperCache)) {
+   if (($cache_obj->genereting_output == 1) or ($cache_obj->genereting_output == -1) or (!$SuperCache)) {
       settype($categ, "integer");
       if ($categ) {
          include("header.php");
@@ -58,23 +58,23 @@ $ThisRedo = "modules.php?ModPath=$ModPath&ModStart=$ModStart";
             <h2 class="mb-3"><a href="'.$ThisFile.'"><img src="modules/'.$ModPath.'/npds_quiz.png" alt="icon_quiz" style="max-width:80px; max-height=80px;" loading="lazy"/></a>'.quiz_translate("Questions du Quiz").'</h2>
             <hr />
             <h3 class="mb-3 text-muted">'.$categorie.'</h3>';
-            if ($type==1) {
+            if ($type == 1) {
                // si le type de quiz est sur une seule page, on inclue la routine page seule
-               include("modules/$ModPath/quiz_1_page.php");
-            } elseif ($type==2) {
-               if (!isset($nbquest)) $nbquest=0;
+               include 'modules/'.$ModPath.'/quiz_1_page.php';
+            } elseif ($type == 2) {
+               if (!isset($nbquest)) $nbquest = 0;
                // si c'est une question par page, on inclue la routine 1 page
-               include("modules/$ModPath/quiz_x_pages.php");
+               include 'modules/'.$ModPath.'/quiz_x_pages.php';
             }
          }
       }
       else {
-         include("header.php");
-         $affi='';
+         include 'header.php';
+         $affi = '';
          $result = sql_query("SELECT id, categorie, admin FROM ".$NPDS_Prefix."quiz_categorie");
          $totquiz = sql_num_rows($result);
          while (list($id, $categorie, $adm_quiz) = sql_fetch_array($result)) {
-         $affi.='
+         $affi .= '
          <div class="col-sm-6">
             <div class="card my-2">
                <div class="card-header h3"><span class="badge bg-secondary">'.$id.'</span><img src="modules/'.$ModPath.'/npds_quiz.png" alt="icon_quiz" style="max-width:80px; max-height=80px;" loading="lazy"></div>
@@ -93,8 +93,8 @@ $ThisRedo = "modules.php?ModPath=$ModPath&ModStart=$ModStart";
       }
       if ($SuperCache)
          $cache_obj->endCachingPage();
-      include("footer.php");
+      include 'footer.php';
    }
    else
-      redirect_url("index.php");
+      redirect_url('index.php');
 ?>

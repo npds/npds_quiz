@@ -29,13 +29,12 @@ if (strstr($ModPath,'..') || strstr($ModStart,'..') || stristr($ModPath, 'script
 
 global $language, $NPDS_Prefix;
 if (file_exists("modules/$ModPath/admin/pages.php"))
-   include ("modules/$ModPath/admin/pages.php");
+   include "modules/$ModPath/admin/pages.php";
 
-include_once ("modules/$ModPath/lang/lang-$language.php");
-include_once('cache.class.php');
-include ("modules/$ModPath/cache.timings.php");
-
-include ("header.php");
+include_once "modules/$ModPath/lang/lang-$language.php";
+include_once 'cache.class.php';
+include 'modules/'.$ModPath.'/cache.timings.php';
+include "header.php";
 
 $ThisFile = "modules.php?ModPath=$ModPath&amp;ModStart=$ModStart";
 $ThisRedo = "modules.php?ModPath=$ModPath&ModStart=$ModStart";
@@ -47,16 +46,16 @@ if ($SuperCache) {
 } 
 else
    $cache_obj = new SuperCacheEmpty();
-if (($cache_obj->genereting_output==1) or ($cache_obj->genereting_output==-1) or (!$SuperCache)) {
+if (($cache_obj->genereting_output == 1) or ($cache_obj->genereting_output == -1) or (!$SuperCache)) {
 
 //$result=sql_query("select reponsesjustes, nbquestion, dateheure, categorie from ".$NPDS_Prefix."quiz_visiteur where nomvisiteur='$cookie[1]'");
 
 $getvisiteur =  sql_query("SELECT DISTINCT nomvisiteur FROM ".$NPDS_Prefix."quiz_visiteur ORDER BY nomvisiteur ASC" );
 $getQuiz = sql_query("SELECT id FROM ".$NPDS_Prefix."quiz_categorie" );
 $getQuest = sql_query("SELECT id FROM ".$NPDS_Prefix."quiz" );
-$numQuest=sql_num_rows($getQuest);
-$numQuiz=sql_num_rows($getQuiz);
-$num=sql_num_rows($getvisiteur);
+$numQuest = sql_num_rows($getQuest);
+$numQuiz = sql_num_rows($getQuiz);
+$num = sql_num_rows($getvisiteur);
 if( ! isset( $numQuiz ) ) $numQuiz = ''; // l'initialiser si elle n'existe pas   
 if( ! isset( $numQuest ) ) $numQuest = ''; // l'initialiser si elle n'existe pas   
 
@@ -65,9 +64,9 @@ echo '
 <hr />
 <div class="lead mb-3"><span class="badge bg-secondary">'.$numQuiz.'</span> '.quiz_translate("quizz composés en tout de").' <span class="badge bg-secondary">'.$numQuest.'</span> '.quiz_translate("questions...").'</div>';
 
-   while ($row=sql_fetch_array($getvisiteur)){
+   while ($row = sql_fetch_array($getvisiteur)){
       //echo $row["nomvisiteur"]." ".$row["name"]." ".$row["address"]."<br>";
-      $visiteur=$row["nomvisiteur"];
+      $visiteur = $row["nomvisiteur"];
       echo '
    <div class="my-3">
        <table data-toggle="table" data-mobile-responsive="true">
@@ -113,7 +112,7 @@ echo '
    if($reponsesTotales > 0)
       $pourcentage = number_format($bonnesReponses/$reponsesTotales*100, 2, '.', ' ');
    else
-      $pourcentage=0;
+      $pourcentage = 0;
    echo' 
                <td>
                   <div class="progress" style="height:14px;">
@@ -130,5 +129,5 @@ echo '
    if ($SuperCache)
       $cache_obj->endCachingPage();
 
-   include("footer.php");
+   include 'footer.php';
 ?>

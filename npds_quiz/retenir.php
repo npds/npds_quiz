@@ -38,28 +38,28 @@ include_once ("modules/$ModPath/lang/lang-$language.php");
    } 
    else
       $cache_obj = new SuperCacheEmpty();
-   if (($cache_obj->genereting_output==1) or ($cache_obj->genereting_output==-1) or (!$SuperCache)) {
-      if ($op=="retenir") {
-         settype($quizid, "integer");
+   if (($cache_obj->genereting_output == 1) or ($cache_obj->genereting_output == -1) or (!$SuperCache)) {
+      if ($op == 'retenir') {
+         settype($quizid, 'integer');
          $result = sql_query("SELECT retenir FROM ".$NPDS_Prefix."quiz_categorie WHERE id='$quizid'");
          list($retenir) = sql_fetch_row($result);
       global $Default_Theme, $Default_Skin, $user;
-      if (isset($user) and $user!='') {
+      if (isset($user) and $user != '') {
          global $cookie;
-         if($cookie[9] !='') {
-            $ibix=explode('+', urldecode($cookie[9]));
-            if (array_key_exists(0, $ibix)) $theme=$ibix[0]; else $theme=$Default_Theme;
-            if (array_key_exists(1, $ibix)) $skin=$ibix[1]; else $skin=$Default_skin; //$skin=''; 
-            $tmp_theme=$theme;
-            if (!$file=@opendir("themes/$theme")) $tmp_theme=$Default_Theme;
+         if($cookie[9] != '') {
+            $ibix = explode('+', urldecode($cookie[9]));
+            if (array_key_exists(0, $ibix)) $theme=$ibix[0]; else $theme = $Default_Theme;
+            if (array_key_exists(1, $ibix)) $skin=$ibix[1]; else $skin = $Default_skin;
+            $tmp_theme = $theme;
+            if (!$file=@opendir("themes/$theme")) $tmp_theme = $Default_Theme;
          } else 
-            $tmp_theme=$Default_Theme;
+            $tmp_theme = $Default_Theme;
       } else {
-         $theme=$Default_Theme;
-         $skin=$Default_Skin;
-         $tmp_theme=$theme;
+         $theme = $Default_Theme;
+         $skin = $Default_Skin;
+         $tmp_theme = $theme;
       }
-      include("meta/meta.php");
+      include 'meta/meta.php';
       echo '
          <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon" />
          <link rel="stylesheet" href="lib/font-awesome/css/all.min.css" />

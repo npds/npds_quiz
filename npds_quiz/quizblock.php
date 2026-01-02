@@ -16,7 +16,7 @@
 /*                                                                      */
 /************************************************************************/
 global $language;
-include_once ("modules/npds_quiz/lang/lang-$language.php");
+include_once "modules/npds_quiz/lang/lang-$language.php";
 $content = '';
 $content .= '
 <div class="d-flex w-100 justify-content-center">
@@ -28,7 +28,7 @@ $content .= '
    <li class="list-group-item"><a href="modules.php?ModPath=npds_quiz&ModStart=resultat_glob">'.ucfirst(quiz_translate("résultats")).'</a></li>
 </ul>';
 if ($admin) 
-   $content .='
+   $content .= '
    <div class="mt-2 text-end">
       <a href="admin.php?op=Extend-Admin-SubModule&amp;ModPath=npds_quiz&amp;ModStart=admin/quiz" data-bs-toggle="tooltip" title="[french]Administration[/french][english]Administration[/english][chinese]&#34892;&#25919;[/chinese][spanish]Administraci&oacute;n[/spanish][german]Verwaltung[/german]" data-bs-placement="left"><i class="fa fa-cogs fa-lg"></i></a>
    </div>';

@@ -25,7 +25,7 @@ Installation : npds_quiz Compatible REvolution 16 rev 2020
 ## Affiche un lien admin dans un bloc (pas forcement utile)
 ##
 ## COMMUNAUTE: 
-## Support NPDS : http://modules.npds.org
+## Support NPDS : https://www.npds.org
 ##
 ----------------------------------------------------------------------
 Lancement : quiz

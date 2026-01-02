@@ -32,34 +32,30 @@ function tableau_question($nbquest, $tmp, $propo1, $propo2, $propo3='', $propo4=
       <input type="radio" id="propo2_'.$nbquest.'" name="var['.$nbquest.']" class="form-check-input" value="'.$propo2.'" />
       <label class="form-check-label" for="propo2_'.$nbquest.'">'.$propo2.'</label>
    </div>';
-   if ($propo3!='') {
+   if ($propo3 != '') 
       echo'
    <div class="form-check">
       <input type="radio" id="propo3_'.$nbquest.'" name="var['.$nbquest.']" class="form-check-input" value="'.$propo3.'" />
       <label class="form-check-label" for="propo3_'.$nbquest.'">'.$propo3.'</label>
    </div>';
-   }
-   if ($propo4!='') {
+   if ($propo4 != '') 
       echo'
       <div class="form-check">
          <input type="radio" id="propo4_'.$nbquest.'" name="var['.$nbquest.']" class="form-check-input" value="'.$propo4.'" />
          <label class="form-check-label" for="propo4_'.$nbquest.'">'.$propo4.'</label>
       </div>';
-   }
-   if ($propo5!='') {
+   if ($propo5 != '')
       echo'
       <div class="form-check">
          <input type="radio" id="propo5_'.$nbquest.'" name="var['.$nbquest.']" class="form-check-input" value="'.$propo5.'" />
          <label class="form-check-label" for="propo5_'.$nbquest.'">'.$propo5.'</label>
       </div>';
-   }
-   if ($propo6!='') {
+   if ($propo6 != '')
       echo'
       <div class="form-check">
          <input type="radio" id="propo6_'.$nbquest.'" name="var['.$nbquest.']" class="form-check-input" value="'.$propo6.'" />
          <label class="form-check-label" for="propo6_'.$nbquest.'">'.$propo6.'</label>
       </div>';
-   }
    echo '
    </div>';
 }
@@ -72,14 +68,14 @@ echo '
       <input type="hidden" name="ModStart" value="quiz_valid" />';
 while ($row = sql_fetch_Array($result)) {
    $nbquest++;
-   $row['question']=stripslashes($row['question']);
-   $row['reponse']=stripslashes($row['reponse']);
-   $row['propo1']=stripslashes($row['propo1']);
-   $row['propo2']=stripslashes($row['propo2']);
-   $row['propo3']=stripslashes($row['propo3']);
-   $row['propo4']=stripslashes($row['propo4']);
-   $row['propo5']=stripslashes($row['propo5']);
-   $row['propo6']=stripslashes($row['propo6']);
+   $row['question'] = stripslashes($row['question']);
+   $row['reponse'] = stripslashes($row['reponse']);
+   $row['propo1'] = stripslashes($row['propo1']);
+   $row['propo2'] = stripslashes($row['propo2']);
+   $row['propo3'] = stripslashes($row['propo3']);
+   $row['propo4'] = stripslashes($row['propo4']);
+   $row['propo5'] = stripslashes($row['propo5']);
+   $row['propo6'] = stripslashes($row['propo6']);
 
    tableau_question($nbquest, $row['question'], $row['propo1'], $row['propo2'], $row['propo3'], $row['propo4'], $row['propo5'], $row['propo6']);
    echo "<input type=\"hidden\" name=\"id[$nbquest]\" value=\"$row[id]\" />";
