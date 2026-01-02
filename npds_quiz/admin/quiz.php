@@ -27,13 +27,13 @@ $f_meta_nom = 'npds_quiz';
 admindroits($aid,$f_meta_nom);
 //<== controle droit
 global $language;
-   include ("modules/$ModPath/lang/lang-admin-$language.php");
+   include "modules/$ModPath/lang/lang-admin-$language.php";
 
 function listquiz() {
    global $aid, $NPDS_Prefix, $ModPath, $ModStart;
    $result = sql_query("SELECT radminsuper FROM authors WHERE aid='$aid'");
    list($radminsuper) = sql_fetch_array($result);
-   if ($radminsuper==1)
+   if ($radminsuper == 1)
       $result = sql_query("SELECT id, categorie, admin FROM ".$NPDS_Prefix."quiz_categorie ORDER BY categorie");
 /*
    else {
@@ -112,7 +112,7 @@ function detailquiz($quizid) {
          </div>';
    if( ! isset( $sel1 ) ) $sel1 = ''; 
    if( ! isset( $sel2 ) ) $sel2 = '';
-   if ($type==1) { $sel1='checked="checked"'; $sel2=''; }
+   if ($type == 1) { $sel1='checked="checked"'; $sel2=''; }
    else if ($type==2) { $sel1=''; $sel2='checked="checked"'; }
    echo '
          <div class="mb-3 row">
@@ -159,7 +159,7 @@ function detailquiz($quizid) {
 function deletequiz($idquiztranche, $ok='0') {
    global $ModPath, $ModStart, $NPDS_Prefix;
 
-   if ($ok==1) {
+   if ($ok == 1) {
       sql_query("DELETE FROM ".$NPDS_Prefix."quiz WHERE categorie='$idquiztranche'");
       sql_query("DELETE FROM ".$NPDS_Prefix."quiz_categorie WHERE id='$idquiztranche'");
       sql_query("DELETE FROM ".$NPDS_Prefix."quiz_visiteur WHERE categorie='$idquiztranche'");
