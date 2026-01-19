@@ -9,23 +9,24 @@
 /*                                                                      */
 /* This program is free software. You can redistribute it and/or modify */
 /* it under the terms of the GNU General Public License as published by */
-/* the Free Software Foundation; either version 2 of the License.       */
+/* the Free Software Foundation; either version 3 of the License.       */
 /*                                                                      */
 /* BLOC QUIZ                                                            */
 /* [ QUIZ ] quizblock File [ 2019 ] par [ Nicol ]                       */
+/* [ VERSION ACTUELLE ] v3.0                                            */
 /*                                                                      */
 /************************************************************************/
 global $language;
-include_once "modules/npds_quiz/lang/lang-$language.php";
+include_once 'modules/npds_quiz/lang/lang-'.$language.'.php';
 $content = '';
 $content .= '
 <div class="d-flex w-100 justify-content-center">
    <img src="modules/npds_quiz/npds_quiz.png" alt="icon_quiz" style="max-width:100px; max-height:100px;" loading="lazy" />
 </div>
 <ul class="list-group list-group-flush">
-   <li class="list-group-item"><a href="modules.php?ModPath=npds_quiz&ModStart=quiz">'.quiz_translate("Quiz").'</a></li>
-   <li class="list-group-item"><a href="modules.php?ModPath=npds_quiz&ModStart=resultat">'.ucfirst(quiz_translate("vos résultats")).'</a></li>
-   <li class="list-group-item"><a href="modules.php?ModPath=npds_quiz&ModStart=resultat_glob">'.ucfirst(quiz_translate("résultats")).'</a></li>
+   <li class="list-group-item"><a href="modules.php?ModPath=npds_quiz&ModStart=quiz">'.quiz_translate('Quiz').'</a></li>
+   <li class="list-group-item"><a href="modules.php?ModPath=npds_quiz&ModStart=resultat">'.ucfirst(quiz_translate('vos résultats')).'</a></li>
+   <li class="list-group-item"><a href="modules.php?ModPath=npds_quiz&ModStart=resultat_glob">'.ucfirst(quiz_translate('résultats')).'</a></li>
 </ul>';
 if ($admin) 
    $content .= '

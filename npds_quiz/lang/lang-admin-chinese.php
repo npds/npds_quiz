@@ -9,7 +9,7 @@
 /*                                                                      */
 /* This program is free software. You can redistribute it and/or modify */
 /* it under the terms of the GNU General Public License as published by */
-/* the Free Software Foundation; either version 2 of the License.       */
+/* the Free Software Foundation; either version 3 of the License.       */
 /************************************************************************/
 
 function quiz_adm_translate($phrase) {
@@ -49,8 +49,7 @@ function quiz_adm_translate($phrase) {
    case "Une question par page": $tmp="每頁一個問題"; break;
    case "Une seule page": $tmp="一頁"; break;
    case "Vous devez obligatoirement saisir le libellé de la question. Vous devez ensuite saisir au moins les 2 premières propositions, les suivantes étant optionnelles. Vous devez ensuite copier-coller la bonne proposition dans la case Bonne réponse.": $tmp="您必須輸入問題的措詞。然後必須至少輸入前兩個命題，以下是可選的。然後必須將正確的命題複製並粘貼到正確答案框中。"; break;
-
-   default: $tmp = "Translation error <b>[** $phrase **]</b>"; break;
+   default: $tmp='需要翻译稿 [** '.$phrase.' **]'; break;
  }
  return (htmlentities($tmp,ENT_QUOTES|ENT_SUBSTITUTE|ENT_HTML401,'UTF-8'));
 }

@@ -16,28 +16,29 @@
 /* ACTION (Modification REv compatible) Par [Fouineur]                  */
 /* ACTION (REv16 compatible PHP7.2 SQL5.7) Par [NICOL] le [ 8/05/2019 ] */
 /* ACTION (Rev16.2 + langue pivot) Par [NICOL/jpb] le [ 2020 ]          */
+/* [ VERSION ACTUELLE ] v3.0                                            */
 /************************************************************************/
 /* This NPDS modules is free software. You can redistribute it          */
 /* and/or modify it under the terms of the GNU General Public License   */
-/* as published by the Free Software Foundation; either version 2 of    */
+/* as published by the Free Software Foundation; either version 3 of    */
 /* the License.                                                         */
 /************************************************************************/
 
-if (!stristr($_SERVER['PHP_SELF'],"modules.php")) die();
+if (!stristr($_SERVER['PHP_SELF'],'modules.php')) die();
 if (strstr($ModPath,'..') || strstr($ModStart,'..') || stristr($ModPath, 'script') || stristr($ModPath, 'cookie') || stristr($ModPath, 'iframe') || stristr($ModPath, 'applet') || stristr($ModPath, 'object') || stristr($ModPath, 'meta') || stristr($ModStart, 'script') || stristr($ModStart, 'cookie') || stristr($ModStart, 'iframe') || stristr($ModStart, 'applet') || stristr($ModStart, 'object') || stristr($ModStart, 'meta'))
    die();
 
 global $language, $NPDS_Prefix;
 if (file_exists("modules/$ModPath/admin/pages.php"))
-   include "modules/$ModPath/admin/pages.php";
+   include 'modules/'.$ModPath.'/admin/pages.php';
 
-include_once "modules/$ModPath/lang/lang-$language.php";
+include_once 'modules/'.$ModPath.'/lang/lang-'.$language.'.php';
 include_once 'cache.class.php';
 include 'modules/'.$ModPath.'/cache.timings.php';
-include "header.php";
+include 'header.php';
 
-$ThisFile = "modules.php?ModPath=$ModPath&amp;ModStart=$ModStart";
-$ThisRedo = "modules.php?ModPath=$ModPath&ModStart=$ModStart";
+$ThisFile = 'modules.php?ModPath='.$ModPath.'&amp;ModStart='.$ModStart;
+$ThisRedo = 'modules.php?ModPath='.$ModPath.'&ModStart='.$ModStart;
 
 global $SuperCache;
 if ($SuperCache) {
@@ -62,20 +63,20 @@ if( ! isset( $numQuest ) ) $numQuest = ''; // l'initialiser si elle n'existe pas
 echo '
 <h2><img src="modules/'.$ModPath.'/npds_quiz.png" alt="icon_quiz" style="max-width:120px; max-height=120px;" loading="lazy">Quiz résultats</h2>
 <hr />
-<div class="lead mb-3"><span class="badge bg-secondary">'.$numQuiz.'</span> '.quiz_translate("quizz composés en tout de").' <span class="badge bg-secondary">'.$numQuest.'</span> '.quiz_translate("questions...").'</div>';
+<div class="lead mb-3"><span class="badge bg-secondary">'.$numQuiz.'</span> '.quiz_translate('quizz composés en tout de').' <span class="badge bg-secondary">'.$numQuest.'</span> '.quiz_translate('questions...').'</div>';
 
    while ($row = sql_fetch_array($getvisiteur)){
       //echo $row["nomvisiteur"]." ".$row["name"]." ".$row["address"]."<br>";
-      $visiteur = $row["nomvisiteur"];
+      $visiteur = $row['nomvisiteur'];
       echo '
    <div class="my-3">
        <table data-toggle="table" data-mobile-responsive="true">
           <thead>
              <tr class="table-dark">
-                <th data-halign="center" data-align="center">Les '.quiz_translate("Quiz").' joués par '.$visiteur.'</td>
+                <th data-halign="center" data-align="center">Les '.quiz_translate('Quiz').' joués par '.$visiteur.'</td>
                 <th data-halign="center" data-align="center">Bonnes réponses</td>
                 <th data-halign="center" data-align="center">Questions</td>
-                <th data-halign="center" data-align="center">'.quiz_translate("Date").'</td>
+                <th data-halign="center" data-align="center">'.quiz_translate('Date').'</td>
              </tr>
           </thead>
           <tbody>';
@@ -99,10 +100,10 @@ echo '
    }
    echo'
             <tr class="table-secondary">
-               <td>'.quiz_translate("nombre de quizz joué par").' '.$visiteur.'</td>
-               <td>'.quiz_translate("total bonnes réponses").'</td>
-               <td>'.quiz_translate("total réponses").'</td>
-               <td>'.quiz_translate("pourcentage de réussite").'</td>
+               <td>'.quiz_translate('nombre de quizz joué par').' '.$visiteur.'</td>
+               <td>'.quiz_translate('total bonnes réponses').'</td>
+               <td>'.quiz_translate('total réponses').'</td>
+               <td>'.quiz_translate('pourcentage de réussite').'</td>
             </tr>
             <tr class="table-secondary" align="center">
                <td class="h4"><span class="badge rounded-pill bg-secondary">'.$nbQuizz.'</span></td>
@@ -110,7 +111,7 @@ echo '
                <td class="h4"><span class="badge rounded-pill bg-secondary">'.$reponsesTotales.'</span></td>';
    $pourcentage = 0;
    if($reponsesTotales > 0)
-      $pourcentage = number_format($bonnesReponses/$reponsesTotales*100, 2, '.', ' ');
+      $pourcentage = number_format($bonnesReponses / $reponsesTotales * 100, 2, '.', ' ');
    else
       $pourcentage = 0;
    echo' 

@@ -13,23 +13,24 @@
 /* MODULE DEVELOPPE POUR NPDS VERSION [ VERSION DU CORE NPDS ]          */
 /************************************************************************/
 /* [ ACTION ( Correction, MaJ, ...) ] Par [ NICOL] le [ 8/05/2019 ]     */
+/* [ VERSION ACTUELLE ] v3.0                                            */
 /************************************************************************/
 /* This NPDS modules is free software. You can redistribute it          */
 /* and/or modify it under the terms of the GNU General Public License   */
-/* as published by the Free Software Foundation; either version 2 of    */
+/* as published by the Free Software Foundation; either version 3 of    */
 /* the License.                                                         */
 /************************************************************************/
 
-if (!stristr($_SERVER['PHP_SELF'],"modules.php"))
+if (!stristr($_SERVER['PHP_SELF'],'modules.php'))
    die();
-if (strstr($ModPath,"..") || strstr($ModStart,"..") || stristr($ModPath, "script") || stristr($ModPath, "cookie") || stristr($ModPath, "iframe") || stristr($ModPath, "applet") || stristr($ModPath, "object") || stristr($ModPath, "meta") || stristr($ModStart, "script") || stristr($ModStart, "cookie") || stristr($ModStart, "iframe") || stristr($ModStart, "applet") || stristr($ModStart, "object") || stristr($ModStart, "meta"))
+if (strstr($ModPath,'..') || strstr($ModStart,'..') || stristr($ModPath, 'script') || stristr($ModPath, 'cookie') || stristr($ModPath, 'iframe') || stristr($ModPath, 'applet') || stristr($ModPath, 'object') || stristr($ModPath, 'meta') || stristr($ModStart, 'script') || stristr($ModStart, 'cookie') || stristr($ModStart, 'iframe') || stristr($ModStart, 'applet') || stristr($ModStart, 'object') || stristr($ModStart, 'meta'))
    die();
 
 global $language, $NPDS_Prefix;
 
-if (file_exists("modules/$ModPath/admin/pages.php"))
-   include ("modules/$ModPath/admin/pages.php");
-include_once ("modules/$ModPath/lang/lang-$language.php");
+if (file_exists('modules/'.$ModPath.'/admin/pages.php'))
+   include 'modules/'.$ModPath.'/admin/pages.php';
+include_once 'modules/'.$ModPath.'/lang/lang-'.$language.'.php';
 
    global $SuperCache;
    if ($SuperCache) {
@@ -48,10 +49,10 @@ include_once ("modules/$ModPath/lang/lang-$language.php");
          global $cookie;
          if($cookie[9] != '') {
             $ibix = explode('+', urldecode($cookie[9]));
-            if (array_key_exists(0, $ibix)) $theme=$ibix[0]; else $theme = $Default_Theme;
-            if (array_key_exists(1, $ibix)) $skin=$ibix[1]; else $skin = $Default_skin;
+            if (array_key_exists(0, $ibix)) $theme = $ibix[0]; else $theme = $Default_Theme;
+            if (array_key_exists(1, $ibix)) $skin = $ibix[1]; else $skin = $Default_skin;
             $tmp_theme = $theme;
-            if (!$file=@opendir("themes/$theme")) $tmp_theme = $Default_Theme;
+            if (!$file = @opendir('themes/'.$theme)) $tmp_theme = $Default_Theme;
          } else 
             $tmp_theme = $Default_Theme;
       } else {
@@ -70,9 +71,9 @@ include_once ("modules/$ModPath/lang/lang-$language.php");
          <script type="text/javascript" src="lib/js/jquery.min.js"></script>
       </head>
       <body class="p-3">
-         <h2>'.quiz_translate("Quiz").'</h2>
+         <h2>'.quiz_translate('Quiz').'</h2>
          <div class="mb-3">'.$retenir.' </div>
-         <a href="javascript:window.close();" class="btn btn-primary">'.quiz_translate("fermer cette fenêtre").'</a>
+         <a href="javascript:window.close();" class="btn btn-primary">'.quiz_translate('fermer cette fenêtre').'</a>
       </body>
    </html>';
       }

@@ -13,10 +13,11 @@
 /* MODULE DEVELOPPE POUR NPDS VERSION [ Revolution v16 ]                */
 /************************************************************************/
 /* ACTION (REv16 compatible PHP7.2 SQL5.7) Par [NICOL] le [ 8/05/2019 ] */
+/* [ VERSION ACTUELLE ] v3.0                                            */
 /************************************************************************/
 /* This NPDS modules is free software. You can redistribute it          */
 /* and/or modify it under the terms of the GNU General Public License   */
-/* as published by the Free Software Foundation; either version 2 of    */
+/* as published by the Free Software Foundation; either version 3 of    */
 /* the License.                                                         */
 /************************************************************************/
 
@@ -27,7 +28,7 @@ $f_meta_nom = 'npds_quiz';
 admindroits($aid,$f_meta_nom);
 //<== controle droit
 global $language;
-   include "modules/$ModPath/lang/lang-admin-$language.php";
+   include 'modules/'.$ModPath.'/lang/lang-admin-'.$language.'.php';
 
 function listquiz() {
    global $aid, $NPDS_Prefix, $ModPath, $ModStart;
@@ -44,18 +45,18 @@ $hlpfile = '';
    GraphicAdmin($hlpfile);
 
    echo '
-   <h2>'.quiz_adm_translate("Administration des Quiz").'</h2>
+   <h2>'.quiz_adm_translate('Administration des Quiz').'</h2>
    <hr />
-   <h3><a href="admin.php?op=Extend-Admin-SubModule&amp;ModPath='.$ModPath.'&amp;ModStart='.$ModStart.'&amp;subop=quizcrea"><i class="fa fa-plus-circle me-2"></i></a>'.quiz_adm_translate("Créer un nouveau Quiz").'</h3>
+   <h3><a href="admin.php?op=Extend-Admin-SubModule&amp;ModPath='.$ModPath.'&amp;ModStart='.$ModStart.'&amp;subop=quizcrea"><i class="fa fa-plus-circle me-2"></i></a>'.quiz_adm_translate('Créer un nouveau Quiz').'</h3>
    <hr />
-   <h3 class="mb-3">'.quiz_adm_translate("Liste des Quiz").'</h3>
+   <h3 class="mb-3">'.quiz_adm_translate('Liste des Quiz').'</h3>
 
    <div class="">
       <table data-toggle="table" data-mobile-responsive="true">
          <thead>
-            <th data-halign="center">'.quiz_adm_translate("Nom du Quiz").'</th>
-            <th data-halign="center" data-sortable="true"><i class="fas fa-user-cog fa-lg align-middle me-2 text-body-tertiary"></i>'.quiz_adm_translate("Auteur").'</th>
-            <th data-halign="center">'.quiz_adm_translate("Tester").'</th>
+            <th data-halign="center">'.quiz_adm_translate('Nom du Quiz').'</th>
+            <th data-halign="center" data-sortable="true"><i class="fas fa-user-cog fa-lg align-middle me-2 text-body-tertiary"></i>'.quiz_adm_translate('Auteur').'</th>
+            <th data-halign="center">'.quiz_adm_translate('Tester').'</th>
          </thead>
          <tbody>';
    while (list($id, $categorie, $adm_quiz) = sql_fetch_array($result)) {
@@ -63,7 +64,7 @@ $hlpfile = '';
             <tr>
                <td><a href=\"admin.php?op=Extend-Admin-SubModule&amp;ModPath=$ModPath&amp;ModStart=$ModStart&amp;subop=quizmod&amp;quizid=$id\">$categorie</a></td>
                <td align=\"center\">$adm_quiz</td>
-               <td align=\"center\"><a href=\"modules.php?ModPath=$ModPath&amp;ModStart=quiz&amp;categ=$id\" target=\"_blank\">".quiz_adm_translate("Test")."</td>
+               <td align=\"center\"><a href=\"modules.php?ModPath=$ModPath&amp;ModStart=quiz&amp;categ=$id\" target=\"_blank\">".quiz_adm_translate('Test')."</td>
             </tr>";
    }
    echo '
@@ -77,35 +78,35 @@ function detailquiz($quizid) {
    $result = sql_query("SELECT categorie, tranche, comment1, comment2, type, retenir FROM ".$NPDS_Prefix."quiz_categorie WHERE id='$quizid'");
    list($categorie, $tranche, $comment1, $comment2, $type, $retenir) = sql_fetch_row($result);
    echo '
-   <h2>'.quiz_adm_translate("Administration des Quiz").'</h2>
+   <h2>'.quiz_adm_translate('Administration des Quiz').'</h2>
    <hr />
       <form action="admin.php" method="post" name="adminForm">
          <div class="mb-3 row">
-            <label class="col-form-label col-sm-4" for="categorie">'.quiz_adm_translate("Nom du Quiz").'</label>
+            <label class="col-form-label col-sm-4" for="categorie">'.quiz_adm_translate('Nom du Quiz').'</label>
             <div class="col-sm-8">
                <input type="text" class="form-control" id="categorie" name="categorie" value="'.$categorie.'" />
             </div>
          </div>
          <div class="mb-3 row">
-            <label class="col-form-label col-sm-4" for="tranche">'.quiz_adm_translate("Intervalle").'</label>
+            <label class="col-form-label col-sm-4" for="tranche">'.quiz_adm_translate('Intervalle').'</label>
             <div class="col-sm-8">
                <input type="text" class="form-control" id="tranche" name="tranche" value="'.$tranche.'" />
             </div>
          </div>
          <div class="mb-3 row">
-            <label class="col-form-label col-sm-4" for="comment1">'.quiz_adm_translate("En dessous").'</label>
+            <label class="col-form-label col-sm-4" for="comment1">'.quiz_adm_translate('En dessous').'</label>
             <div class="col-sm-8">
                <textarea class="form-control" id="comment1" name="comment1">'.$comment1.'</textarea>
             </div>
          </div>
          <div class="mb-3 row">
-            <label class="col-form-label col-sm-4" for="comment2">'.quiz_adm_translate("En dessus").'</label>
+            <label class="col-form-label col-sm-4" for="comment2">'.quiz_adm_translate('En dessus').'</label>
             <div class="col-sm-8">
                <textarea class="form-control" id="comment2" name="comment2">'.$comment2.'</textarea>
             </div>
          </div>
          <div class="mb-3  row">
-            <label class="col-form-label col-sm-4" for="journal">'.quiz_adm_translate("Points à retenir").'</label>
+            <label class="col-form-label col-sm-4" for="journal">'.quiz_adm_translate('Points à retenir').'</label>
             <div class="col-sm-8">
                <textarea class="form-control" id="journal" name="journal">'.$retenir.'</textarea>
             </div>
@@ -116,15 +117,15 @@ function detailquiz($quizid) {
    else if ($type==2) { $sel1=''; $sel2='checked="checked"'; }
    echo '
          <div class="mb-3 row">
-            <label class="col-form-label col-sm-4" for="">'.quiz_adm_translate("Type de Quiz").'</label>
+            <label class="col-form-label col-sm-4" for="">'.quiz_adm_translate('Type de Quiz').'</label>
             <div class="col-sm-8">
                   <div class="form-check">
                      <input type="radio" id="seulepage" name="type" class="form-check-input" value="1" '.$sel1.' />
-                     <label class="form-check-label" for="seulepage">'.quiz_adm_translate("Une seule page").'</label>
+                     <label class="form-check-label" for="seulepage">'.quiz_adm_translate('Une seule page').'</label>
                   </div>
                   <div class="form-check">
                      <input type="radio" id="seulequestion" name="type" class="form-check-input" value="2" '.$sel2.' />
-                     <label class="form-check-label" for="seulequestion">'.quiz_adm_translate("Une question par page").'</label>
+                     <label class="form-check-label" for="seulequestion">'.quiz_adm_translate('Une question par page').'</label>
                   </div>
             </div>
          </div>
@@ -135,8 +136,8 @@ function detailquiz($quizid) {
          <input type="hidden" name="subop" value="quiztranche" />
          <div class="mb-3 row">
             <div class="col-sm-8 ms-sm-auto">
-               <input type="submit" class="btn btn-primary me-2" value="'.quiz_adm_translate("Enregistrer ces paramètres").'" />
-               <a href="admin.php?op=Extend-Admin-SubModule&amp;ModPath='.$ModPath.'&amp;ModStart='.$ModStart.'&amp;subop=quizdelete&amp;idquiztranche='.$quizid.'" class="btn btn-danger">'.quiz_adm_translate("Effacer ce Quiz").'</a>
+               <input type="submit" class="btn btn-primary me-2" value="'.quiz_adm_translate('Enregistrer ces paramètres').'" />
+               <a href="admin.php?op=Extend-Admin-SubModule&amp;ModPath='.$ModPath.'&amp;ModStart='.$ModStart.'&amp;subop=quizdelete&amp;idquiztranche='.$quizid.'" class="btn btn-danger">'.quiz_adm_translate('Effacer ce Quiz').'</a>
             </div>
          </div>
    </form>';
@@ -153,7 +154,7 @@ function detailquiz($quizid) {
    </ul>';
    }
    echo '
-   <h3 class="mb-3"><a href="admin.php?op=Extend-Admin-SubModule&amp;ModPath='.$ModPath.'&amp;ModStart='.$ModStart.'&amp;subop=quizaddquest&quizcat='.$quizid.'"><i class="fa fa-plus-circle me-2"></i></a>'.quiz_adm_translate("Ajouter une question").'</h3>';
+   <h3 class="mb-3"><a href="admin.php?op=Extend-Admin-SubModule&amp;ModPath='.$ModPath.'&amp;ModStart='.$ModStart.'&amp;subop=quizaddquest&quizcat='.$quizid.'"><i class="fa fa-plus-circle me-2"></i></a>'.quiz_adm_translate('Ajouter une question').'</h3>';
 }
 
 function deletequiz($idquiztranche, $ok='0') {
@@ -168,12 +169,12 @@ function deletequiz($idquiztranche, $ok='0') {
       $result=sql_query("SELECT categorie FROM ".$NPDS_Prefix."quiz_categorie WHERE id='$idquiztranche'");
       list($categ) = sql_fetch_row($result);
       echo '
-      <h3>'.quiz_adm_translate("Administration des Quiz").'</h3>
+      <h3>'.quiz_adm_translate('Administration des Quiz').'</h3>
       <hr />
-      <h4>'.quiz_adm_translate("Quiz").' : '.$categ.'</h4>
+      <h4>'.quiz_adm_translate('Quiz').' : '.$categ.'</h4>
       <div class="alert alert-danger">'.quiz_adm_translate("Etes-vous sûr de vouloir effacer ce quiz et toutes ses questions ?").'<br />
-         <a href=admin.php?op=Extend-Admin-SubModule&amp;ModPath='.$ModPath.'&amp;ModStart='.$ModStart.'&amp;subop=quizdelete&amp;idquiztranche='.$idquiztranche.'&amp;ok=1 " class="btn btn-danger btn-sm my-2 me-2">'.quiz_adm_translate("Oui").'</a>
-         <a href="admin.php?op=Extend-Admin-SubModule&amp;ModPath='.$ModPath.'&amp;ModStart='.$ModStart.'&amp;subop=quizmod&amp;quizid='.$idquiztranche.'" CLASS="btn btn-secondary btn-sm my-2">'.quiz_adm_translate("Non").'</a>
+         <a href=admin.php?op=Extend-Admin-SubModule&amp;ModPath='.$ModPath.'&amp;ModStart='.$ModStart.'&amp;subop=quizdelete&amp;idquiztranche='.$idquiztranche.'&amp;ok=1 " class="btn btn-danger btn-sm my-2 me-2">'.quiz_adm_translate('Oui').'</a>
+         <a href="admin.php?op=Extend-Admin-SubModule&amp;ModPath='.$ModPath.'&amp;ModStart='.$ModStart.'&amp;subop=quizmod&amp;quizid='.$idquiztranche.'" CLASS="btn btn-secondary btn-sm my-2">'.quiz_adm_translate('Non').'</a>
       </div>';
    }
 }
@@ -196,7 +197,7 @@ function detailquestion($quizid, $quizq) {
    list($categorie) = sql_fetch_array($result);
 
    echo '
-   <h2>'.quiz_adm_translate("Administration des Quiz").'</h2>
+   <h2>'.quiz_adm_translate('Administration des Quiz').'</h2>
    <hr />';
 
    $result = sql_query("SELECT question, reponse, propo1, propo2, propo3, propo4, propo5, propo6, comment FROM ".$NPDS_Prefix."quiz WHERE id='$quizq'");
@@ -207,49 +208,49 @@ function detailquestion($quizid, $quizq) {
    '.quiz_adm_translate("Vous devez obligatoirement saisir le libellé de la question. Vous devez ensuite saisir au moins les 2 premières propositions, les suivantes étant optionnelles. Vous devez ensuite copier-coller la bonne proposition dans la case Bonne réponse.").'
    <form action="admin.php" method="post" name="adminForm" class="my-3">
       <div class="mb-3 row">
-         <label class="col-form-label col-sm-12" for="question">'.quiz_adm_translate("Libellé").' <span class="text-danger">*</span></label>
+         <label class="col-form-label col-sm-12" for="question">'.quiz_adm_translate('Libellé').' <span class="text-danger">*</span></label>
          <div class="col-sm-12">
             <textarea name="question" id="question" class="form-control tin" rows="4">'.$question.'</textarea>
          </div>
       </div>
       <div class="mb-3 row">
-         <label class="col-form-label col-sm-4" for="propo1">'.quiz_adm_translate("Proposition").' 1 <span class="text-danger">*</span></label>
+         <label class="col-form-label col-sm-4" for="propo1">'.quiz_adm_translate('Proposition').' 1 <span class="text-danger">*</span></label>
          <div class="col-sm-8">
             <textarea id="propo1" name="propo1" class="form-control" rows="2">'.$propo1.'</textarea>
          </div>
       </div>
       <div class="mb-3 row">
-         <label class="col-form-label col-sm-4" for="propo2">'.quiz_adm_translate("Proposition").' 2 <span class="text-danger">*</span></label>
+         <label class="col-form-label col-sm-4" for="propo2">'.quiz_adm_translate('Proposition').' 2 <span class="text-danger">*</span></label>
          <div class="col-sm-8">
             <textarea id="propo2" name="propo2" class="form-control" rows="2">'.$propo2.'</textarea>
          </div>
       </div>
       <div class="mb-3 row">
-         <label class="col-form-label col-sm-4" for="propo3">'.quiz_adm_translate("Proposition").' 3 </label>
+         <label class="col-form-label col-sm-4" for="propo3">'.quiz_adm_translate('Proposition').' 3 </label>
          <div class="col-sm-8">
             <textarea id="propo3" name="propo3" class="form-control" rows="2">'.$propo3.'</textarea>
          </div>
       </div>
       <div class="mb-3 row">
-         <label class="col-form-label col-sm-4" for="propo4">'.quiz_adm_translate("Proposition").' 4 </label>
+         <label class="col-form-label col-sm-4" for="propo4">'.quiz_adm_translate('Proposition').' 4 </label>
          <div class="col-sm-8">
             <textarea id="propo4" name="propo4" class="form-control" rows="2">'.$propo4.'</textarea>
          </div>
       </div>
       <div class="mb-3 row">
-         <label class="col-form-label col-sm-4" for="propo5">'.quiz_adm_translate("Proposition").' 5 </label>
+         <label class="col-form-label col-sm-4" for="propo5">'.quiz_adm_translate('Proposition').' 5 </label>
          <div class="col-sm-8">
             <textarea id="propo5" name="propo5" class="form-control" rows="2">'.$propo5.'</textarea>
          </div>
       </div>
       <div class="mb-3 row">
-         <label class="col-form-label col-sm-4" for="propo6">'.quiz_adm_translate("Proposition").' 6 </label>
+         <label class="col-form-label col-sm-4" for="propo6">'.quiz_adm_translate('Proposition').' 6 </label>
          <div class="col-sm-8">
             <textarea id="propo6" name="propo6" class="form-control" rows="2">'.$propo6.'</textarea>
          </div>
       </div>
       <div class="mb-3 row">
-         <label class="col-form-label col-sm-4" for="reponse">'.quiz_adm_translate("Bonne réponse").' <span class="text-danger">*</span></label>
+         <label class="col-form-label col-sm-4" for="reponse">'.quiz_adm_translate('Bonne réponse').' <span class="text-danger">*</span></label>
          <div class="col-sm-8">
             <textarea id="reponse" name="reponse" class="form-control"  rows="2">'.$reponse.'</textarea>
          </div>
@@ -258,7 +259,7 @@ function detailquestion($quizid, $quizq) {
   // echo aff_editeur("journal", "true");
    echo '
       <div class="mb-3 row">
-         <label class="col-form-label col-sm-12" for="journal">'.quiz_adm_translate("Commentaires optionnels").'</label>
+         <label class="col-form-label col-sm-12" for="journal">'.quiz_adm_translate('Commentaires optionnels').'</label>
          <div class="col-sm-12">
             <textarea name="journal" id="journal" class="form-control tin" rows="4">'.$comment.'</textarea>
          </div>
@@ -266,7 +267,7 @@ function detailquestion($quizid, $quizq) {
       <div class="mb-3 row">
          <div class="col-sm-12">
             <input type="submit" class="btn btn-primary me-2" value="'.quiz_adm_translate("Enregistrer les modifications").'" />
-            <a href="admin.php?op=Extend-Admin-SubModule&amp;ModPath='.$ModPath.'&amp;ModStart='.$ModStart.'&amp;subop=quizdeletequest&amp;quizid='.$quizid.'&amp;id='.$quizq.'" class="btn btn-danger">'.quiz_adm_translate("Effacer cette question").'</a>
+            <a href="admin.php?op=Extend-Admin-SubModule&amp;ModPath='.$ModPath.'&amp;ModStart='.$ModStart.'&amp;subop=quizdeletequest&amp;quizid='.$quizid.'&amp;id='.$quizq.'" class="btn btn-danger">'.quiz_adm_translate('Effacer cette question').'</a>
          </div>
       </div>
       <input type="hidden" name="op" value="Extend-Admin-SubModule" />
@@ -320,18 +321,18 @@ function majquestion($id, $question, $reponse, $propo1, $propo2, $propo3, $propo
 function quizcrea() {
    global $ModPath, $ModStart, $NPDS_Prefix;
    echo '
-   <h3>'.quiz_adm_translate("Administration des Quiz").'</h3>
+   <h3>'.quiz_adm_translate('Administration des Quiz').'</h3>
    <hr />
    <form action="admin.php" method="post">
       <div class="mb-3 row">
-         <label class="col-form-label col-sm-4" for="nomquiz">'.quiz_adm_translate("Nom du Quiz").'</label>
+         <label class="col-form-label col-sm-4" for="nomquiz">'.quiz_adm_translate('Nom du Quiz').'</label>
          <div class="col-sm-8">
             <input type="text" class="form-control" id="nomquiz" name="nomquiz" />
          </div>
       </div>
       <div class="mb-3 row">
          <div class="col-sm-8 ms-sm-auto">
-            <input type="submit" class="btn btn-primary" value="'.quiz_adm_translate("Enregistrer ce nouveau Quiz").'" />
+            <input type="submit" class="btn btn-primary" value="'.quiz_adm_translate('Enregistrer ce nouveau Quiz').'" />
          </div>
       </div>
       <input type="hidden" name="op" value="Extend-Admin-SubModule" />
@@ -353,13 +354,13 @@ function quizaddquest($quizcat) {
    global $ModPath, $ModStart, $NPDS_Prefix;
 
    echo '
-   <h2>'.quiz_adm_translate("Administration des Quiz").'</h2>
+   <h2>'.quiz_adm_translate('Administration des Quiz').'</h2>
    <hr />';
 
    $result = sql_query("SELECT categorie FROM ".$NPDS_Prefix."quiz_categorie WHERE id='$quizcat'");
    list($categorie) = sql_fetch_array($result);
    echo '
-   <h3>'.quiz_adm_translate("Nouvelle question pour le Quiz").' : '.$categorie.'</h3>
+   <h3>'.quiz_adm_translate('Nouvelle question pour le Quiz').' : '.$categorie.'</h3>
    <form action="admin.php" method="post" name="adminForm">
       <div class="blockquote">
    '.quiz_adm_translate("Vous devez obligatoirement saisir le libellé de la question. Vous devez ensuite saisir au moins les 2 premières propositions, les suivantes étant optionnelles. Vous devez ensuite copier-coller la bonne proposition dans la case Bonne réponse.").'
@@ -367,49 +368,49 @@ function quizaddquest($quizcat) {
       <div>
          <hr />
          <div class="mb-3 row">
-            <label class="col-form-label col-sm-12" for="question">'.quiz_adm_translate("Libellé").' <span class="text-danger">*</span></label>
+            <label class="col-form-label col-sm-12" for="question">'.quiz_adm_translate('Libellé').' <span class="text-danger">*</span></label>
             <div class="col">
                <textarea id="question" name="question" class="form-control tin" rows="4"></textarea>
             </div>
          </div>
          <div class="mb-3 row">
-            <label class="col-form-label col-sm-4" for="propo1">'.quiz_adm_translate("Proposition").' 1 <span class="text-danger">*</span></label>
+            <label class="col-form-label col-sm-4" for="propo1">'.quiz_adm_translate('Proposition').' 1 <span class="text-danger">*</span></label>
             <div class="col-sm-8">
                <textarea id="propo1" name="propo1" class="form-control" rows="2"></textarea>
             </div>
          </div>
          <div class="mb-3 row">
-            <label class="col-form-label col-sm-4" for="propo2">'.quiz_adm_translate("Proposition").' 2 <span class="text-danger">*</span></label>
+            <label class="col-form-label col-sm-4" for="propo2">'.quiz_adm_translate('Proposition').' 2 <span class="text-danger">*</span></label>
             <div class="col-sm-8">
                <textarea id="propo2" name="propo2" class="form-control" rows="2"></textarea>
             </div>
          </div>
          <div class="mb-3 row">
-            <label class="col-form-label col-sm-4" for="propo3">'.quiz_adm_translate("Proposition").' 3</label>
+            <label class="col-form-label col-sm-4" for="propo3">'.quiz_adm_translate('Proposition').' 3</label>
             <div class="col-sm-8">
                <textarea id="propo3" name="propo3" class="form-control" rows="2"></textarea>
             </div>
          </div>
          <div class="mb-3 row">
-            <label class="col-form-label col-sm-4" for="propo4">'.quiz_adm_translate("Proposition").' 4</label>
+            <label class="col-form-label col-sm-4" for="propo4">'.quiz_adm_translate('Proposition').' 4</label>
             <div class="col-sm-8">
                <textarea id="propo4" name="propo4" class="form-control" rows="2"></textarea>
             </div>
          </div>
          <div class="mb-3 row">
-            <label class="col-form-label col-sm-4" for="propo5">'.quiz_adm_translate("Proposition").' 5</label>
+            <label class="col-form-label col-sm-4" for="propo5">'.quiz_adm_translate('Proposition').' 5</label>
             <div class="col-sm-8">
                <textarea id="propo5" name="propo5" class="form-control" rows="2"></textarea>
             </div>
          </div>
          <div class="mb-3 row">
-            <label class="col-form-label col-sm-4" for="propo6">'.quiz_adm_translate("Proposition").' 6</label>
+            <label class="col-form-label col-sm-4" for="propo6">'.quiz_adm_translate('Proposition').' 6</label>
             <div class="col-sm-8">
                <textarea id="propo6" name="propo6" class="form-control" rows="2"></textarea>
             </div>
          </div>
          <div class="mb-3 row">
-            <label class="col-form-label col-sm-4" for="reponse">'.quiz_adm_translate("Bonne réponse").' <span class="text-danger">*</span></label>
+            <label class="col-form-label col-sm-4" for="reponse">'.quiz_adm_translate('Bonne réponse').' <span class="text-danger">*</span></label>
             <div class="col-sm-8">
                <textarea id="reponse" name="reponse" class="form-control" rows="2"></textarea>
             </div>
@@ -417,7 +418,7 @@ function quizaddquest($quizcat) {
          echo aff_editeur("question", "true");
          echo '
          <div class="mb-3 row">
-            <label class="col-form-label col-sm-12" for="journal">'.quiz_adm_translate("Commentaires optionnels").'</label>
+            <label class="col-form-label col-sm-12" for="journal">'.quiz_adm_translate('Commentaires optionnels').'</label>
             <div class="col">
                <textarea id="journal" name="journal" class="tin form-control" rows="4"></textarea>
             </div>
@@ -431,7 +432,7 @@ function quizaddquest($quizcat) {
          <input type="hidden" name="quizcat" value="'.$quizcat.'" />
          <div class="mb-3 row">
             <div class="col-sm-12">
-               <input type="submit" class="btn btn-primary" value="'.quiz_adm_translate("Enregistrer cette question").'" />
+               <input type="submit" class="btn btn-primary" value="'.quiz_adm_translate('Enregistrer cette question').'" />
             </div>
          </div>
       </div>
@@ -441,35 +442,35 @@ function quizaddquest($quizcat) {
 if ($admin) {
    if(!isset($subop)) $subop = '';
    switch ($subop) {
-       case "quizmod":
+       case 'quizmod':
           detailquiz($quizid);
           break;
-       case "quiztranche":
+       case 'quiztranche':
           quiztranche($idquiztranche, $categorie, $tranche, $comment1, $comment2, $type, $journal);
           break;
-       case "quizdelete":
+       case 'quizdelete':
           if( ! isset( $ok ) ) $ok = '';
           deletequiz($idquiztranche, $ok);
           break;
-       case "quizcrea":
+       case 'quizcrea':
           quizcrea();
           break;
-       case "quizenreg":
+       case 'quizenreg':
           quizenreg($nomquiz);
           break;
-       case "quizaddquest":
+       case 'quizaddquest':
           quizaddquest($quizcat);
           break;
-       case "quizenregnewquest":
+       case 'quizenregnewquest':
           enregnewquest($question, $reponse, $propo1, $propo2, $propo3, $propo4, $propo5, $propo6, $journal, $quizcat);
           break;
-       case "quizmodquest":
+       case 'quizmodquest':
           detailquestion($quizid, $quizq);
           break;
-       case "quizdeletequest":
+       case 'quizdeletequest':
           deletequest($id, $quizid);
           break;
-       case "quizenregquest":
+       case 'quizenregquest':
           majquestion($id, $question, $reponse, $propo1, $propo2, $propo3, $propo4, $propo5, $propo6, $journal, $quizid);
           break;
        default:
@@ -479,5 +480,5 @@ if ($admin) {
 }
    if ($SuperCache)
       $cache_obj->endCachingPage();
-   include("footer.php");
+   include 'footer.php';
 ?>

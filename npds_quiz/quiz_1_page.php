@@ -13,14 +13,16 @@
 /* MODULE DEVELOPPE POUR NPDS VERSION [REvolution 16]                   */
 /************************************************************************/
 /* ACTION (REv16 compatible PHP7.2 SQL5.7) Par [NICOL] le [ 8/05/2019 ] */
+/* [ VERSION ACTUELLE ] v3.0                                            */
 /************************************************************************/
 /* This NPDS modules is free software. You can redistribute it          */
 /* and/or modify it under the terms of the GNU General Public License   */
-/* as published by the Free Software Foundation; either version 2 of    */
+/* as published by the Free Software Foundation; either version 3 of    */
 /* the License.                                                         */
 /************************************************************************/
+if (!stristr($_SERVER['PHP_SELF'],'modules.php')) die();
 
-function tableau_question($nbquest, $tmp, $propo1, $propo2, $propo3='', $propo4='', $propo5='', $propo6='') {
+function tableau_question($nbquest, $tmp, $propo1, $propo2, $propo3 = '', $propo4 = '', $propo5 = '', $propo6 = '') {
    echo '
    <div class="card card-body mb-3">
          <strong class="my-2 lead">'.$tmp.'</strong>
@@ -84,6 +86,6 @@ echo '
       <input type="hidden" name="nbquest" value="'.$nbquest.'" />
       <input type="hidden" name="categ" value="'.$categ.'" />
       <input type="hidden" name="op" value="valid" />
-      <input type="submit" name="ok" value="'.quiz_translate("Valider ce Quiz").'" class="btn btn-primary my-3" />
+      <input type="submit" name="ok" value="'.quiz_translate('Valider ce Quiz').'" class="btn btn-primary my-3" />
    </form>';
 ?>

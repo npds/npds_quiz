@@ -9,7 +9,7 @@
 /*                                                                      */
 /* This program is free software. You can redistribute it and/or modify */
 /* it under the terms of the GNU General Public License as published by */
-/* the Free Software Foundation; either version 2 of the License.       */
+/* the Free Software Foundation; either version 3 of the License.       */
 /************************************************************************/
 
 function quiz_translate($phrase) {
@@ -54,8 +54,7 @@ function quiz_translate($phrase) {
    case "Vous avez déjà participé à ce quiz le": $tmp="Sie haben dieses Quiz bereits angenommen"; break;
    case "Vous avez obtenu": $tmp="Sie haben erhalten"; break;
    case "Vous avez répondu": $tmp="Du hast geantwortet"; break;
-
-   default: $tmp = "Translation error <b>[** $phrase **]</b>"; break;
+   default: $tmp = 'Translation error [** '.$phrase.' **]'; break;
  }
  return (htmlentities($tmp,ENT_QUOTES|ENT_SUBSTITUTE|ENT_HTML401,'UTF-8'));
 }

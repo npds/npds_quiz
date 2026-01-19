@@ -16,13 +16,13 @@
 /************************************************************************/
 /* This NPDS modules is free software. You can redistribute it          */
 /* and/or modify it under the terms of the GNU General Public License   */
-/* as published by the Free Software Foundation; either version 2 of    */
+/* as published by the Free Software Foundation; either version 3 of    */
 /* the License.                                                         */
 /************************************************************************/
 global $ModInstall;
 
 #autodoc $name_module: Nom du module
-$name_module = "npds_quiz";
+$name_module = 'npds_quiz';
 
 #autodoc $path_adm_module: chemin depuis $ModInstall #required SI admin avec interface
 $path_adm_module = 'admin/quiz';

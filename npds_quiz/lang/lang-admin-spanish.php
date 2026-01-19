@@ -9,7 +9,7 @@
 /*                                                                      */
 /* This program is free software. You can redistribute it and/or modify */
 /* it under the terms of the GNU General Public License as published by */
-/* the Free Software Foundation; either version 2 of the License.       */
+/* the Free Software Foundation; either version 3 of the License.       */
 /************************************************************************/
 
 function quiz_adm_translate($phrase) {
@@ -49,8 +49,7 @@ function quiz_adm_translate($phrase) {
    case "Une question par page": $tmp="Una pregunta por página"; break;
    case "Une seule page": $tmp="Una página"; break;
    case "Vous devez obligatoirement saisir le libellé de la question. Vous devez ensuite saisir au moins les 2 premières propositions, les suivantes étant optionnelles. Vous devez ensuite copier-coller la bonne proposition dans la case Bonne réponse.": $tmp="Debe ingresar la redacción de la pregunta. Luego debe ingresar al menos las 2 primeras proposiciones, las siguientes son opcionales. Luego debe copiar y pegar la proposición correcta en el cuadro Respuesta correcta."; break;
-
-   default: $tmp = "Translation error <b>[** $phrase **]</b>"; break;
+   default: $tmp = 'Translation error [** '.$phrase.' **]'; break;
  }
  return (htmlentities($tmp,ENT_QUOTES|ENT_SUBSTITUTE|ENT_HTML401,'UTF-8'));
 }

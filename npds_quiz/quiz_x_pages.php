@@ -13,10 +13,11 @@
 /* MODULE DEVELOPPE POUR NPDS VERSION [ Revolution v16 ]                */
 /************************************************************************/
 /* ACTION (REv16 compatible PHP7.2 SQL5.7) Par [NICOL] le [ 8/05/2019 ] */
+/* [ VERSION ACTUELLE ] v3.0                                            */
 /************************************************************************/
 /* This NPDS modules is free software. You can redistribute it          */
 /* and/or modify it under the terms of the GNU General Public License   */
-/* as published by the Free Software Foundation; either version 2 of    */
+/* as published by the Free Software Foundation; either version 3 of    */
 /* the License.                                                         */
 /************************************************************************/
 ?>
@@ -44,23 +45,23 @@ function verif_quiz() {
 
 function question($quizid, $nbquest, $combien, $categ) {
    global $ModPath, $NPDS_Prefix;
-   settype ($nbquest, "integer");
+   settype ($nbquest, 'integer');
    if ($nbquest < $combien) {
       $result = sql_query("SELECT question, reponse, propo1, propo2, propo3, propo4, propo5, propo6, comment FROM ".$NPDS_Prefix."quiz WHERE categorie='$categ' ORDER BY id LIMIT $nbquest,1");
       $row = sql_fetch_Array($result);
       $nbquest++;
-      $question= stripslashes($row['question']);
-      $reponse= stripslashes($row['reponse']);
-      $propo1= stripslashes($row['propo1']);
-      $propo2= stripslashes($row['propo2']);
-      $propo3= stripslashes($row['propo3']);
-      $propo4= stripslashes($row['propo4']);
-      $propo5= stripslashes($row['propo5']);
-      $propo6= stripslashes($row['propo6']);
-      $comment= stripslashes($row['comment']);
+      $question = stripslashes($row['question']);
+      $reponse = stripslashes($row['reponse']);
+      $propo1 = stripslashes($row['propo1']);
+      $propo2 = stripslashes($row['propo2']);
+      $propo3 = stripslashes($row['propo3']);
+      $propo4 = stripslashes($row['propo4']);
+      $propo5 = stripslashes($row['propo5']);
+      $propo6 = stripslashes($row['propo6']);
+      $comment = stripslashes($row['comment']);
 
       echo '
-      <p><b>'.quiz_translate("Question").' '.$nbquest.' '.quiz_translate("sur").' '.$combien.'</b></p>';
+      <p><b>'.quiz_translate('Question').' '.$nbquest.' '.quiz_translate('sur').' '.$combien.'</b></p>';
       echo '
    <div class="card card-body mb-2">
        <div>'.$question.'</div>
@@ -74,25 +75,25 @@ function question($quizid, $nbquest, $combien, $categ) {
             <input type="radio" name="radio1" id="pro2" value="'.$propo2.'" class="form-check-input" />
             <label class="form-check-label" for="pro2">'.$propo2.'</label>
          </div>';
-      if ($propo3!='')
+      if ($propo3 != '')
          echo '
          <div class="form-check">
             <input type="radio" name="radio1" id="pro3" value="'.$propo3.'" class="form-check-input" />
             <label class="form-check-label" for="pro3">'.$propo3.'</label>
          </div>';
-      if ($propo4!='')
+      if ($propo4 != '')
          echo '
          <div class="form-check">
             <input type="radio" name="radio1" id="pro4" value="'.$propo4.'" class="form-check-input" />
             <label class="form-check-label" for="pro4">'.$propo4.'</label>
          </div>';
-      if ($propo5!='')
+      if ($propo5 != '')
          echo '
          <div class="form-check">
             <input type="radio" name="radio1" id="pro5" value="'.$propo5.'" class="form-check-input" />
             <label class="form-check-label" for="pro5">'.$propo5.'</label>
          </div>';
-      if ($propo6!='')
+      if ($propo6 != '')
          echo '
          <div class="form-check">
             <input type="radio" name="radio1" id="pro6" value="'.$propo6.'" class="form-check-input" />
@@ -104,18 +105,18 @@ function question($quizid, $nbquest, $combien, $categ) {
          <input type="hidden" name="nbquest" value="'.$nbquest.'" />
          <input type="hidden" name="categ" value="'.$categ.'" />
          <input type="hidden" name="op" value="valid" />
-         <input type="button" class="btn btn-primary my-3" name="ok" value="'.quiz_translate("Choisissez la bonne réponse").'" onClick="verif_quiz()" />
+         <input type="button" class="btn btn-primary my-3" name="ok" value="'.quiz_translate('Choisissez la bonne réponse').'" onClick="verif_quiz()" />
 
          <p id="rep" name="rep" class="text-danger" ></p>
 
          <div class="mb-3 row">
-            <label class="col-form-label col-sm-12" for="com">'.quiz_translate("Commentaires").'</label>
+            <label class="col-form-label col-sm-12" for="com">'.quiz_translate('Commentaires').'</label>
             <div class="col-sm-12">
                <div name="com" id="com" class="form-control"></div>
             </div>
          </div>';
          
-      $nombouton = $nbquest==($combien) ? quiz_translate("Fin du Quiz") : quiz_translate("Question suivante");
+      $nombouton = $nbquest == ($combien) ? quiz_translate('Fin du Quiz') : quiz_translate('Question suivante');
       echo '
          <input type="submit" class="btn btn-success" name="suiv" value="'.$nombouton.'" disabled="disabled" />
       </form>
@@ -124,9 +125,9 @@ function question($quizid, $nbquest, $combien, $categ) {
       echo '<div class="alert alert-success lead">'.quiz_translate("Nous vous remercions d'avoir participé à notre Quiz.").'</div>';
       $result = sql_query("SELECT retenir FROM ".$NPDS_Prefix."quiz_categorie WHERE id='$categ'");
       list($retenir) = sql_fetch_row($result);
-      if ($retenir!="") {
+      if ($retenir != '') {
          $PopUp=JavaPopUp("modules.php?ModPath=$ModPath&amp;ModStart=retenir&amp;op=retenir&amp;quizid=$categ","Quiz","300","250");
-         echo "<br /><br /><a href=\"javascript:void(0);\" onClick=\"window.open($PopUp);\" class=\"\">".quiz_translate("Consultez les points à retenir")."</a><br />";
+         echo "<br /><br /><a href=\"javascript:void(0);\" onClick=\"window.open($PopUp);\" class=\"\">".quiz_translate('Consultez les points à retenir')."</a><br />";
       }
    }
 }
