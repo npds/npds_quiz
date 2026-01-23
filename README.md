@@ -1,7 +1,7 @@
 # npds_quiz
 
 ![Image du module npds_quiz](/npds_quiz/npds_quiz.png)
-<img src="/npds_quiz/npds_quiz.png" alt="Image du module npds_quiz" width="100" height="100" />
+<img src="https://codeberg.org/npds/npds_quiz/raw/branch/main/npds_quiz/npds_quiz.png" alt="Image du module npds_quiz" width="100" height="100" />
 Le module **npds_quiz** pour NPDS est compatible avec les versions NPDS **16 et supérieures**.  
 Des Quiz pour votre communauté !
 
