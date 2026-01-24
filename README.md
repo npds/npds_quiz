@@ -50,3 +50,8 @@ Pour désinstaller le module utiliser uniquement l'interface administration !
 3. Dans le tableau des modules, trouvez la ligne correspondant au module **npds_quiz**.
 4. Cliquez sur l’icône **Désinstaller le module** pour désactiver le module.
 
+---
+
+## Support
+
+- [Les forums de npds](https://www.npds.org/forum.php)  
