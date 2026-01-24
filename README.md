@@ -6,8 +6,6 @@
 Le module **npds_quiz** pour NPDS est compatible avec les versions NPDS **16 et supérieures** .  
 Des Quiz pour votre communauté !
 
----
-
 ## Installation
 
 ### 1. Télécharger le module
@@ -16,8 +14,6 @@ Des Quiz pour votre communauté !
 - [Version en cours de développement](https://codeberg.org/npds/npds_quiz/archive/main.zip)
 
 Téléchargez l’archive ZIP de la version choisie.
-
----
 
 ### 2. Copier le dossier du module
 
